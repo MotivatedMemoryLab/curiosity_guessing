@@ -13,3 +13,5 @@ dbcreds
 psidb.sh
 
 resources
+static/videos/*
+static/images/*
