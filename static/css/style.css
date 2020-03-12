@@ -4,7 +4,7 @@ body {
     background-color: white;
     color: black;
     font-weight: 300; 
-    font-size: 13pt;
+    font-size: 11pt;
 }
 
 #container {
@@ -92,4 +92,8 @@ h1 {
 }
 #finalGuess{
     display: none
+}
+
+.slider{
+    width: 50%;
 }

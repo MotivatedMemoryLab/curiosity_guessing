@@ -5,12 +5,17 @@
 *.db
 *.iml
 *.idea
+*.csv
+*.png
+*.jpeg
+*.mp4
 
 # Create this file under util/dbcreds. It should contain two lines that resemble the following:
 # database_url = mysql://user:passwd@127.0.0.1:3306/dbname
 # table_name = tbname
 dbcreds
 psidb.sh
+movedata.sh
 
 resources
 static/videos/*
