@@ -111,6 +111,7 @@ var Curiosity = function() {
             answeredConfidenceValue: 0,
             answeredComplexValue: 0,
             finalGuessPlaceholder: "",
+            validVideoGuess: 0,
             data: [],
             // new stuff
             numStops: 0,
@@ -214,6 +215,7 @@ var Curiosity = function() {
                 this.answeredEnjoyValue = 0;
                 this.answeredComplexValue = 0;
                 this.finalGuess = "";
+                this.validVideoGuess = 0;
                 this.arrayMade = 0;
                 this.iterIndex = 0;
                 this.numStops = 0;
