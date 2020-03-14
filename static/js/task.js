@@ -152,88 +152,93 @@ var Curiosity = function() {
                     this.videoList[randomIndex] = temporaryValue;
                 }
             },
-            nextVideo() { //add notifications for half way ans five vids left!!
-                this.data.push({
-                    trialNumber: this.videoIndex,
-                    trialAnswer: document.getElementById( "video" ).src,
-                    guessList: this.guessList,
-                    curiosityList: this.curiosityList,
-                    finishList: this.finishList,
-                    confidenceList: this.confidenceList,
-                    surpriseValue: this.surpriseValue,
-                    enjoyValue: this.enjoyValue,
-                    complexValue: this.complexValue,
-                    finalGuess: this.finalGuess,
-                    numStops: this.numStops,
-                    stopsArray: this.stopsArray,
-                    stopsPercentArray: this.stopsPercentArray,
-                    vidDurr: this.vidDurr,
-                    alreadyKnowList: this.alreadyKnowList
+            nextVideo() {
+                this.checkVideoGuess(this.videoGuess);
+                if (this.validVideoGuess === 1 && this.answeredSurpriseValue === 1 && this.answeredEnjoyValue === 1 && this.answeredComplexValue === 1) {
+                    this.data.push({
+                        trialNumber: this.videoIndex,
+                        trialAnswer: document.getElementById("video").src,
+                        guessList: this.guessList,
+                        curiosityList: this.curiosityList,
+                        finishList: this.finishList,
+                        confidenceList: this.confidenceList,
+                        surpriseValue: this.surpriseValue,
+                        enjoyValue: this.enjoyValue,
+                        complexValue: this.complexValue,
+                        finalGuess: this.videoGuess,
+                        numStops: this.numStops,
+                        stopsArray: this.stopsArray,
+                        stopsPercentArray: this.stopsPercentArray,
+                        vidDurr: this.vidDurr,
+                        alreadyKnowList: this.alreadyKnowList
+                    });
 
-                });
+                    psiTurk.recordTrialData({
+                        trialNumber: this.videoIndex,
+                        trialAnswer: document.getElementById("video").src,
+                        guessList: this.guessList,
+                        curiosityList: this.curiosityList,
+                        finishList: this.finishList,
+                        confidenceList: this.confidenceList,
+                        surpriseValue: this.surpriseValue,
+                        complexValue: this.complexValue,
+                        enjoyValue: this.enjoyValue,
+                        finalGuess: this.videoGuess,
+                        numStops: this.numStops,
+                        stopsArray: this.stopsArray,
+                        stopsPercentArray: this.stopsPercentArray,
+                        vidDurr: this.vidDurr,
+                        alreadyKnowList: this.alreadyKnowList
+                    });
 
-                psiTurk.recordTrialData({
-                    trialNumber: this.videoIndex,
-                    trialAnswer: document.getElementById( "video" ).src,
-                    guessList: this.guessList,
-                    curiosityList: this.curiosityList,
-                    finishList: this.finishList,
-                    confidenceList: this.confidenceList,
-                    surpriseValue: this.surpriseValue,
-                    complexValue: this.complexValue,
-                    enjoyValue: this.enjoyValue,
-                    finalGuess: this.finalGuess,
-                    numStops: this.numStops,
-                    stopsArray: this.stopsArray,
-                    stopsPercentArray: this.stopsPercentArray,
-                    vidDurr: this.vidDurr,
-                    alreadyKnowList: this.alreadyKnowList
-                });
+                    document.getElementById("finalGuess").style.display = "none";
+                    document.getElementById("curiosityMeasure").style.display = "none";
 
-                document.getElementById("finalGuess").style.display = "none";
-                document.getElementById("curiosityMeasure").style.display = "none";
+                    this.videoIndex++;
+                    // console.log("The Current video index is", this.videoIndex);
+                    this.videoGuess = "";
+                    this.alreadyKnow = false;
+                    this.alreadyKnowList = [];
+                    this.curiosityValue = 50;
+                    this.confidenceValue = 50;
+                    this.finishValue = 50;
+                    this.guessList = [];
+                    this.curiosityList = [];
+                    this.finishList = [];
+                    this.confidenceList = [];
+                    this.answeredCuriosityValue = 0;
+                    this.answeredFinishValue = 0;
+                    this.answeredConfidenceValue = 0;
+                    this.surpriseValue = 50;
+                    this.enjoyValue = 50;
+                    this.complexValue = 50;
+                    this.answeredSurpriseValue = 0;
+                    this.answeredEnjoyValue = 0;
+                    this.answeredComplexValue = 0;
+                    this.finalGuessPlaceholder = "";
+                    this.finalGuess = "";
+                    this.validVideoGuess = 0;
+                    this.arrayMade = 0;
+                    this.iterIndex = 0;
+                    this.numStops = 0;
+                    this.stopsArray = [];
+                    this.stopsPercentArray = [];
+                    this.vidDurr = 0;
 
-                this.videoIndex++;
-                // console.log("The Current video index is", this.videoIndex);
-                this.videoGuess = "";
-                this.alreadyKnow = false;
-                this.alreadyKnowList = [];
-                this.curiosityValue = 50;
-                this.confidenceValue = 50;
-                this.finishValue = 50;
-                this.guessList = [];
-                this.curiosityList = [];
-                this.finishList = [];
-                this.confidenceList = [];
-                this.answeredCuriosityValue = 0;
-                this.answeredFinishValue = 0;
-                this.answeredConfidenceValue = 0;
-                this.surpriseValue = 50;
-                this.enjoyValue = 50;
-                this.complexValue = 50;
-                this.answeredSurpriseValue = 0;
-                this.answeredEnjoyValue = 0;
-                this.answeredComplexValue = 0;
-                this.finalGuess = "";
-                this.validVideoGuess = 0;
-                this.arrayMade = 0;
-                this.iterIndex = 0;
-                this.numStops = 0;
-                this.stopsArray = [];
-                this.stopsPercentArray = [];
-                this.vidDurr = 0;
+                    this.midPointMarkers(this.videoIndex);
+                    let myVideo = document.getElementById("video");
 
-                this.midPointMarkers(this.videoIndex);
-                let myVideo = document.getElementById("video");
-
-                if (this.videoIndex > this.videoList.length-1){
-                    currentview = new Questionnaire();
+                    if (this.videoIndex > this.videoList.length - 1) {
+                        currentview = new Questionnaire();
+                    } else {
+                        myVideo.src = this.videoList[this.videoIndex].src;
+                        document.getElementById("videoGuess").style.display = "none"; // inline is the other option
+                        document.getElementById("interruptionMeasure").style.display = "none";
+                        // document.getElementById("curiosityMeasure").style.display = "none";
+                        // this.setFocus();
+                    }
                 } else {
-                    myVideo.src = this.videoList[this.videoIndex].src;
-                    document.getElementById("videoGuess").style.display = "none"; // inline is the other option
-                    document.getElementById("interruptionMeasure").style.display = "none";
-                    // document.getElementById("curiosityMeasure").style.display = "none";
-                    // this.setFocus();
+                    alert("Please answer all questions");
                 }
             },
             continueToStart() {
@@ -319,54 +324,47 @@ var Curiosity = function() {
                     this.vidCurrTime = myVideo.currentTime;
                     document.getElementById("interruptionMeasure").style.display = "block";
                     document.getElementById("videoGuess").style.display = "inline";
-                    this.testInput();
+                    // this.testInput();
                 }
             },
             testInput() {
                 let myVideo = document.getElementById("video");
-                let keyCode = event.keyCode;
-                if (this.answeredFinishValue === 1 && this.answeredConfidenceValue === 1 && (this.answeredCuriosityValue === 1 || this.alreadyKnow) && keyCode === 13) {
-                    this.checkVideoGuess(this.videoGuess);
-                    if (this.validVideoGuess === 1) {
-                        myVideo.play();
-                        this.iterIndex++;
-                        this.guessList.push(this.videoGuess);
-                        this.curiosityList.push(this.curiosityValue);
-                        this.finishList.push(this.finishValue);
-                        this.confidenceList.push(this.confidenceValue);
-                        this.alreadyKnowList.push(this.alreadyKnow ? 1 : 0);
-                        this.videoGuess = "";
-                        this.alreadyKnow = false;
-                        this.answeredCuriosityValue = 0;
-                        this.answeredFinishValue = 0;
-                        this.answeredConfidenceValue = 0;
-                        this.curiosityValue = 50;
-                        this.finishValue = 50;
-                        this.confidenceValue = 50;
-                        document.getElementById("interruptionMeasure").style.display = "none";
+                // let keyCode = event.keyCode;
+                this.checkVideoGuess(this.videoGuess);
+                if (this.answeredFinishValue === 1 && this.answeredConfidenceValue === 1 && (this.answeredCuriosityValue === 1 || this.alreadyKnow) && this.validVideoGuess === 1) {
 
-                        //not used
-                        // this.currentGuess = this.videoGuess;
-                        // this.submitTime = this.vidCurrTime;
-                        // var percentage = (myVideo.currentTime / this.vidDurr) * 100;
-                        // this.percentageSubmit = percentage;
-                        // this.submitTimeList.push(this.submitTime);
-                        // this.percentageSubmitList.push(this.percentageSubmit);
-                        // document.getElementById("displayGuess").style.display = "block";
-                    }
+                    //if (this.validVideoGuess === 1) {
+                    myVideo.play();
+                    this.iterIndex++;
+                    this.guessList.push(this.videoGuess);
+                    this.curiosityList.push(this.curiosityValue);
+                    this.finishList.push(this.finishValue);
+                    this.confidenceList.push(this.confidenceValue);
+                    this.alreadyKnowList.push(this.alreadyKnow ? 1 : 0);
+                    this.videoGuess = "";
+                    this.validVideoGuess = 0;
+                    this.alreadyKnow = false;
+                    this.answeredCuriosityValue = 0;
+                    this.answeredFinishValue = 0;
+                    this.answeredConfidenceValue = 0;
+                    this.curiosityValue = 50;
+                    this.finishValue = 50;
+                    this.confidenceValue = 50;
+                    document.getElementById("interruptionMeasure").style.display = "none";
+                } else {
+                    alert("Please answer all questions");
                 }
             },
-            finalGuessMethod() {
-                var keyCode = event.keyCode;
-                if (keyCode === 13) {
-                    this.checkVideoGuess(this.finalGuessPlaceholder);
-
-                    if (this.validVideoGuess === 1) {
-                        this.finalGuess = this.finalGuessPlaceholder;
-                        this.finalGuessPlaceholder = "";
-                    }
-                }
-            },
+            // finalGuessMethod(finalGuessPlaceholder) {
+            //     if (finalGuessPlaceholder.length <= 1) {
+            //         alert("Please Enter a Valid Guess");
+            //         this.finalGuessPlaceholder = "";
+            //     } else {
+            //         this.validVideoGuess = 1;
+            //         this.finalGuess = this.finalGuessPlaceholder;
+            //         this.finalGuessPlaceholder = "";
+            //     }
+            // },
             finishedVideo() {
                 var myVideo = document.getElementById("video");
                 // console.log("finished video!");
