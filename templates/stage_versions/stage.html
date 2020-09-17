@@ -2,7 +2,7 @@
 {% raw %}
 
 <div id = "app" class = "container">
-    <h1>Video Drawing Experiment</h1>
+    <h1>Video Drawing Game!</h1>
     <div id = "welcome">
         <p>
             <strong>Welcome to the Video Experiment by the Adcock Lab at Duke University!</strong>
@@ -19,14 +19,20 @@
         <p>
             We will also ask you to make a guess about what you think the drawing will be. We expect your guess might
             evolve or change over the video and we are interested in what that process looks like. If you do not have a
-            guess to make, simply write "idk" or "none".
+            guess to make, simply write "idk" (I don't know) or "none".
         </p>
         <p>
             Try to use the most common English words for your guesses. For example, if you see an image of a hamster
             write "hamster" instead of "animal" or "Winter White Dwarf hamster".
+        </p>
         <p>
-            When watching these videos please try your best to <strong>focus your attention on the drawing</strong>
-            to give us the best understanding of how and when you can identify what it being drawn.
+            At the end of each pause, you get to decide whether you would like to <strong>continue watching the video ("Continue
+            Watching")</strong> or <strong>move on to the next video ("Advance to Next")</strong> by selecting the appropriate button. If you
+            elect to move on to the next video, you will also not be able to see the final drawing.
+        </p>
+        <p>
+            When watching these videos please try your best to <strong>focus your attention on the drawing
+            to give us the best understanding of how and when you can identify what it being drawn.</strong>
         </p>
 
         <button id = "startButton" class = "button" @click = "startExp">Continue</button>
@@ -37,14 +43,21 @@
                 button below).</strong>
         </p>
         <p>
-            <strong>To continue playing the video after it's been paused</strong>, you must <u>answer all 4 questions</u>
-            and then <strong>press the Continue Button.</strong> You will be prompt to answer all 4 questions if you happen
-            to forget one.
+            <strong>To continue playing the video after it's been paused or to advance to the next video</strong>,
+            you must <u>answer all 4 questions</u> and then <strong>press the Continue Watching Button</strong> to
+            continue watching or <strong>press the Advance to Next Button</strong> to bring up the post-video questions.
+            You will be prompted to answer all 4 questions if you happen to forget one. You must move <strong>all</strong>
+            sliders on the screen (if your answer is at the mid-point of a slider you must move it off and back into
+            the middle).
         </p>
         <p>
-            <strong>To advance to the next video</strong>, you must first <u>type in your final guess</u> and <u>move ALL
+            If you choose to advance to the next video, you will first be brought to the questions you will answer at
+            the end of each video. After you answer these questions, you can move on to the next video.
+        </p>
+        <p>
+            <strong>To advance to the next video</strong>, you must first <u>type in your final guess</u> and <u>again, move ALL
             slider scales</u>. After these things are done the <strong>"Next Video" button will take you to the next video.</strong>
-            You, again, will be prompt to answer all 4 questions if you happen to forget one.
+            You, again, will be prompted to answer all 4 questions if you happen to forget one.
         </p>
         <p>
             You will receive alerts that you are <strong>halfway</strong> through the task and when you have
@@ -52,7 +65,7 @@
         </p>
         <p>
             Depending on you browser and internet connection, sometimes a video will freeze for a handful of seconds.
-            If this happens, please <strong>do not try to hit the Refresh button or move backwards in the task.</strong>
+            If this happens, please <strong>DO NOT try to hit the Refresh button or move backwards in the task.</strong>
         </p>
         <p>
             Press <strong>start</strong> to begin the task.
@@ -91,7 +104,9 @@
                     Guess? <input id = "videoGuess"  ref = "videoGuess" type = "text" placeholder="Enter Guess"
                                   v-model = "videoGuess">
                 </p>
-                    <button @click = "testInput" class = "button">Continue</button>
+                <br>
+                    <button @click = "testInput" class = "button">Continue Watching</button>
+                    <button @click = "skipToEnd" class = "button">Skip to End</button>
                 <p>
 
                 </p>
@@ -99,13 +114,17 @@
             <div id = "curiosityMeasure">
                 <br>
                 <p>
-                    What is the object in the drawing? <input id = "finalGuess"  ref = "videoGuess" type = "text"
+                    Enter your FINAL guess: <input id = "finalGuess"  ref = "videoGuess" type = "text"
                                                               placeholder="Enter Guess" v-model = "videoGuess">
+                    <input type="checkbox" id="SAB" v-model="sameAsBefore">
+                    <label for="known">Same as Before</label>
                 </p>
                <p>
-                     <strong><u>Overall,</u> how <u>SURPRISED</u> were you by the final outcome?</strong>
+                   <strong>How <u>SURPRISED</u> were you when you realized what the picture was?</strong>
                    <br>NOT surprised <input id = "slider_surprise" class = "slider" type = "range" min = '1' max = "100"
-                                            v-bind:value = "surpriseValue" @input = "sliderFxn_surprise"> VERY surprised
+                                            v-bind:value = "surpriseValue" @input = "sliderFxn_surprise"> VERY surprised,
+                   <input type="checkbox" id="sur_dk" v-model="surpriseDontKnow">
+                   <label for="sur_dk">I still don't know</label>
                 </p>
                  <p>
                      <strong>How much did you <u>ENJOY</u> watching this video?</strong>
@@ -113,10 +132,11 @@
                                              v-bind:value = "enjoyValue" @input = "sliderFxn_enjoy"> A LOT of enjoyment
                 </p>
                 <p>
-                    <strong>How <u>COMPLEX</u> did you find this video?</strong>
-                    <br>NOT complex <input id = "slider_complex" class = "slider" type = "range" min = '1' max = "100"
-                                           v-bind:value = "complexValue" @input = "sliderFxn_complex"> VERY complex
+                    <strong>How <u>FRUSTRATING</u> did you find this video?</strong>
+                    <br>NOT frustrating <input id = "slider_frustrate" class = "slider" type = "range" min = '1' max = "100"
+                                           v-bind:value = "frustrateValue" @input = "sliderFxn_frustrate"> VERY frustrating
                 </p>
+                <br>
                 <p>
                     <button @click = "nextVideo" class = "button">Next Video</button>
                 </p>

@@ -3,33 +3,81 @@
  *     psiturk.js
  *     utils.js
  */
+//test
 
 // Initalize psiturk object
 var psiTurk = new PsiTurk(uniqueId, adServerLoc, mode);
 
-var mycondition = condition;  // these two variables are passed by the psiturk server process
-var mycounterbalance = counterbalance;  // they tell you which condition you have been assigned to
-// they are not used in the stroop code but may be useful to you
+//TODO : BIG QUESTION: can organic and controlled guessing be run out of the same js file?
+//TODO : change video counter to go to 25 videos and then change to add terminate button
 
 // All pages to be loaded
+//TODO add all pages here <--Standardized main instructions page, version unique instructions will be limited to stage.html versions
 var pages = [
-	// "instructions/instruct-1.html",
-	// "instructions/instruct-2.html",
-	// "instructions/instruct-3.html",
-	"instructions/instruct-ready.html",
-	"stage.html",
-	"postquestionnaire.html"
+	"instructions/instruct-all-versions.html",
+    "stage_versions/stage.html",
+    "postquestionnaire.html"
+    // "stage_versions/stage_OCFA.html",
+    // "stage_versions/stage_OCFS.html",
+    // "stage_versions/stage_OCUA.html",
+    // "stage_versions/stage_OCUS.html",
+    // "stage_versions/stage_OCEA.html",
+    // "stage_versions/stage_OCES.html",
+    // "stage_versions/stage_OPFA.html",
+    // "stage_versions/stage_OPFS.html",
+    // "stage_versions/stage_OPUA.html",
+    // "stage_versions/stage_OPUS.html",
+    // "stage_versions/stage_OPEA.html",
+    // "stage_versions/stage_OPES.html",
+    // "stage_versions/stage_CCFA.html",
+    // "stage_versions/stage_CCFS.html",
+    // "stage_versions/stage_CCUA.html",
+    // "stage_versions/stage_CCUS.html",
+    // "stage_versions/stage_CCEA.html",
+    // "stage_versions/stage_CCES.html",
+    // "stage_versions/stage_CPFA.html",
+    // "stage_versions/stage_CPFS.html",
+    // "stage_versions/stage_CPUA.html",
+    // "stage_versions/stage_CPUS.html",
+    // "stage_versions/stage_CPEA.html",
+    // "stage_versions/stage_CPES.html",
 ];
 
 psiTurk.preloadPages(pages);
+console.log(pages)
 
-var instructionPages = [ // add as a list as many pages as you like
-	// "instructions/instruct-1.html",
-	// "instructions/instruct-2.html",
-	// "instructions/instruct-3.html",
-	"instructions/instruct-ready.html"
+var instructionPages = [
+	"instructions/instruct-all-versions.html"
 ];
 
+//TODO add new pages to below mappings
+
+// var stageHtmlName = {
+//     1: {version: "stage_versions/stage_OCFA.html", skip: true, replay: true},
+//     2: "stage_versions/stage_OCFS.html",
+//     3: "stage_versions/stage_OCUA.html",
+//     4: "stage_versions/stage_OCUS.html",
+//     5: "stage_versions/stage_OCEA.html",
+//     6: "stage_versions/stage_OCES.html",
+//     7: "stage_versions/stage_OPFA.html",
+//     8: "stage_versions/stage_OPFS.html",
+//     9: "stage_versions/stage_OPUA.html",
+//     10: "stage_versions/stage_OPUS.html",
+//     11: "stage_versions/stage_OPEA.html",
+//     12: "stage_versions/stage_OPES.html",
+//     13: "stage_versions/stage_CCFA.html",
+//     14: "stage_versions/stage_CCFS.html",
+//     15: "stage_versions/stage_CCUA.html",
+//     16: "stage_versions/stage_CCUS.html",
+//     17: "stage_versions/stage_CCEA.html",
+//     18: "stage_versions/stage_CCES.html",
+//     19: "stage_versions/stage_CPFA.html",
+//     20: "stage_versions/stage_CPFS.html",
+//     21: "stage_versions/stage_CPUA.html",
+//     22: "stage_versions/stage_CPUS.html",
+//     23: "stage_versions/stage_CPEA.html",
+//     24: "stage_versions/stage_CPES.html",
+// };
 
 /********************
 * HTML manipulation
@@ -41,8 +89,9 @@ var instructionPages = [ // add as a list as many pages as you like
 *
 ********************/
 
-var Curiosity = function() {
-    psiTurk.showPage('stage.html');
+var Curiosity = function() { // eventually function(parameters) where parameters is the JSON Object
+
+    psiTurk.showPage("stage_versions/stage.html"); // eventually parameters.version when we get that worked out
     window.moveTo(0, 0);
     window.resizeTo(screen.width, screen.height);
 
@@ -50,79 +99,99 @@ var Curiosity = function() {
     var app = new Vue({
         el: "#app",
         data: {
-            // keep this main videoList intact and instead update code with sequences beginning to unyoked participants
+            //TODO find a way to load in more videos but only play X amount (unless asked)
+            //TODO build functionality for 1) Replay, 2) Skip-to-End, and 3) Terminating Experiment
             videoList: [
-                    // for adding timestamps to videos just include as a key, value pair--timestamps: [2.0, 7.5, 13.0]
-                   {src: "static/videos/pomegranate.mp4", type: "video/mp4", answer: "Pomegranate"},
-                   {src: "static/videos/astronaut.mp4", type: "video/mp4", answer: "Astronaut"},
-                   {src: "static/videos/bananas.mp4", type: "video/mp4", answer: "Bananas"},
-                   {src: "static/videos/bellpepper.mp4", type: "video/mp4", answer: "Bell Pepper"},
-                   {src: "static/videos/bottle.mp4", type: "video/mp4", answer: "Bottle"},
-                   {src: "static/videos/bull.mp4", type: "video/mp4", answer: "Bull"},
-                   {src: "static/videos/cactus.mp4", type: "video/mp4", answer: "Cactus"},
-                   {src: "static/videos/cappuccino.mp4", type: "video/mp4", answer: "Cappuccino"},
-                   {src: "static/videos/car.mp4", type: "video/mp4", answer: "Car"},
-                   {src: "static/videos/dog.mp4", type: "video/mp4", answer: "Dog"},
-                   {src: "static/videos/gamecontroller.mp4", type: "video/mp4", answer: "Game Controller"},
-                   {src: "static/videos/golfer.mp4", type: "video/mp4", answer: "Golfer"},
-                   {src: "static/videos/guitar.mp4", type: "video/mp4", answer: "Guitar"},
-                   {src: "static/videos/headphones.mp4", type: "video/mp4", answer: "Headphones"},
-                   {src: "static/videos/lizard.mp4", type: "video/mp4", answer: "Lizard"},
-                   {src: "static/videos/lungs.mp4", type: "video/mp4", answer: "Lungs"},
-                   {src: "static/videos/microscope.mp4", type: "video/mp4", answer: "Microscope"},
-                   {src: "static/videos/palmtree.mp4", type: "video/mp4", answer: "Palm Tree"},
-                   {src: "static/videos/panda.mp4", type: "video/mp4", answer: "Panda"},
-                   {src: "static/videos/pencil.mp4", type: "video/mp4", answer: "Pencil"},
-                   {src: "static/videos/pineapple.mp4", type: "video/mp4", answer: "Pineapple"},
-                   {src: "static/videos/rose.mp4", type: "video/mp4", answer: "Rose"},
-                   {src: "static/videos/saxophone.mp4", type: "video/mp4", answer: "Saxophone"},
-                   {src: "static/videos/scale.mp4", type: "video/mp4", answer: "Scale"},
-                   {src: "static/videos/skateboard.mp4", type: "video/mp4", answer: "Skateboard"},
-                   {src: "static/videos/sneaker.mp4", type: "video/mp4", answer: "Sneaker"},
-                   {src: "static/videos/surfer.mp4", type: "video/mp4", answer: "Surfer"},
-                   {src: "static/videos/taco.mp4", type: "video/mp4", answer: "Taco"},
-                   {src: "static/videos/wave.mp4", type: "video/mp4", answer: "Wave"},
-                   {src: "static/videos/walrus.mp4", type: "video/mp4", answer: "Walrus"},
+                {src: "static/videos/brain.mp4", type: "video/mp4", answer: "Brain"}
+                   // {src: "static/videos/pomegranate.mp4", type: "video/mp4", answer: "Pomegranate"},
+                   // {src: "static/videos/astronaut.mp4", type: "video/mp4", answer: "Astronaut"},
+                   // {src: "static/videos/bananas.mp4", type: "video/mp4", answer: "Bananas"},
+                   // {src: "static/videos/bellpepper.mp4", type: "video/mp4", answer: "Bell Pepper"},
+                   // {src: "static/videos/bottle.mp4", type: "video/mp4", answer: "Bottle"},
+                   // {src: "static/videos/bull.mp4", type: "video/mp4", answer: "Bull"},
+                   // {src: "static/videos/cactus.mp4", type: "video/mp4", answer: "Cactus"},
+                   // {src: "static/videos/cappuccino.mp4", type: "video/mp4", answer: "Cappuccino"},
+                   // {src: "static/videos/car.mp4", type: "video/mp4", answer: "Car"},
+                   // {src: "static/videos/dog.mp4", type: "video/mp4", answer: "Dog"},
+                   // {src: "static/videos/gamecontroller.mp4", type: "video/mp4", answer: "Game Controller"},
+                   // {src: "static/videos/golfer.mp4", type: "video/mp4", answer: "Golfer"},
+                   // {src: "static/videos/guitar.mp4", type: "video/mp4", answer: "Guitar"},
+                   // {src: "static/videos/harp.mp4", type: "video/mp4", answer: "Harp"},
+                   // {src: "static/videos/headphones.mp4", type: "video/mp4", answer: "Headphones"},
+                   // {src: "static/videos/hotairballoon.mp4", type: "video/mp4", answer: "Hot Air Balloon"},
+                   // {src: "static/videos/lizard.mp4", type: "video/mp4", answer: "Lizard"},
+                   // {src: "static/videos/lungs.mp4", type: "video/mp4", answer: "Lungs"},
+                   // {src: "static/videos/microscope.mp4", type: "video/mp4", answer: "Microscope"},
+                   // {src: "static/videos/nut.mp4", type: "video/mp4", answer: "Nut"},
+                   // {src: "static/videos/palmtree.mp4", type: "video/mp4", answer: "Palm Tree"},
+                   // {src: "static/videos/panda.mp4", type: "video/mp4", answer: "Panda"},
+                   // {src: "static/videos/pizza.mp4", type: "video/mp4", answer: "Pizza"},
+                   // {src: "static/videos/pencil.mp4", type: "video/mp4", answer: "Pencil"},
+                   // {src: "static/videos/pineapple.mp4", type: "video/mp4", answer: "Pineapple"},
+                   // {src: "static/videos/ram.mp4", type: "video/mp4", answer: "Ram"},
+                   // {src: "static/videos/rose.mp4", type: "video/mp4", answer: "Rose"},
+                   // {src: "static/videos/saxophone.mp4", type: "video/mp4", answer: "Saxophone"},
+                   // {src: "static/videos/scale.mp4", type: "video/mp4", answer: "Scale"},
+                   // {src: "static/videos/skateboard.mp4", type: "video/mp4", answer: "Skateboard"},
+                   // {src: "static/videos/sneaker.mp4", type: "video/mp4", answer: "Sneaker"},
+                   // {src: "static/videos/surfer.mp4", type: "video/mp4", answer: "Surfer"},
+                   // {src: "static/videos/taco.mp4", type: "video/mp4", answer: "Taco"},
+                   // {src: "static/videos/wave.mp4", type: "video/mp4", answer: "Wave"},
+                   // {src: "static/videos/walrus.mp4", type: "video/mp4", answer: "Walrus"},
             ],
+
+            //TODO categorize variables into appropriate bins
+            //Variables collected once per trial
             videoIndex: 0,
-            videoGuess: "",
+            numStops: 0,
             finalGuess: "",
+            sameAsBefore: false,
+            finalGuessPlaceholder: "",
+            videoAnswer: "",
+            surpriseValue: 50,
+            enjoyValue: 50,
+            frustrateValue: 50,
+            answeredSurpriseValue: 0,
+            answeredEnjoyValue: 0,
+            answeredFrustrateValue: 0,
+            surpriseDontKnow: false,
+            arrayMade: 0,
+            vidDurr: 0.0,
+            videoBool: false,
+
+            //Within Trial placeholders
+            videoGuess: "",
             submitTime: 0,
             percentageSubmit: 0,
-            videoAnswer: "",
-            guessList: [],
-            submitTimeList: [],
-            percentageSubmitList: [],
             alreadyKnow: false,
-            alreadyKnowList: [],
             curiosityValue: 50,
             finishValue: 50,
             confidenceValue: 50,
-            curiosityList: [],
-            finishList: [],
-            confidenceList: [],
-            surpriseValue: 50,
-            enjoyValue: 50,
-            complexValue: 50,
-            answeredSurpriseValue: 0,
-            answeredEnjoyValue: 0,
             answeredCuriosityValue: 0,
             answeredFinishValue: 0,
             answeredConfidenceValue: 0,
-            answeredComplexValue: 0,
-            finalGuessPlaceholder: "",
             validVideoGuess: 0,
-            data: [],
-            // new stuff
-            numStops: 0,
+            iterIndex: 0,
+            //Variables collected multiple times a trial
+            guessList: [],
+            submitTimeList: [],
+            percentageSubmitList: [],
+            alreadyKnowList: [],
+            curiosityList: [],
+            finishList: [],
+            confidenceList: [],
             stopsArray: [],
             stopsPercentArray: [],
-            vidCurrTime: 0.0,
-            arrayMade: 0,
             percentageStops: [],
-            vidDurr: 0.0,
-            iterIndex: 0,
-            videoBool: false,
+            vidCurrTime: 0.0,
+            data: [],
+
+            //TODO : can you change this actually into an array to reflect not just stopped early but when?
+            stoppedEarly: false,
+
+
+            //new stuff 09122020
+            //TODO : affective ratings, prediction, satisfy, appeal/like, VERSION NUMBER
         },
         computed: {
             // return todos that match the currently selected filter
@@ -154,7 +223,8 @@ var Curiosity = function() {
             },
             nextVideo() {
                 this.checkVideoGuess(this.videoGuess);
-                if (this.validVideoGuess === 1 && this.answeredSurpriseValue === 1 && this.answeredEnjoyValue === 1 && this.answeredComplexValue === 1) {
+                //TODO this validation likely to change or might be dependent on version
+                if ((this.validVideoGuess === 1 || this.sameAsBefore) && (this.answeredSurpriseValue === 1 || this.surpriseDontKnow) && this.answeredEnjoyValue === 1 && this.answeredFrustrateValue === 1) {
                     this.data.push({
                         trialNumber: this.videoIndex,
                         trialAnswer: document.getElementById("video").src,
@@ -164,7 +234,7 @@ var Curiosity = function() {
                         confidenceList: this.confidenceList,
                         surpriseValue: this.surpriseValue,
                         enjoyValue: this.enjoyValue,
-                        complexValue: this.complexValue,
+                        frustrateValue: this.frustrateValue,
                         finalGuess: this.videoGuess,
                         numStops: this.numStops,
                         stopsArray: this.stopsArray,
@@ -172,7 +242,7 @@ var Curiosity = function() {
                         vidDurr: this.vidDurr,
                         alreadyKnowList: this.alreadyKnowList
                     });
-
+                    //TODO all data from all versions will need to be pushed at each instance
                     psiTurk.recordTrialData({
                         trialNumber: this.videoIndex,
                         trialAnswer: document.getElementById("video").src,
@@ -181,23 +251,26 @@ var Curiosity = function() {
                         finishList: this.finishList,
                         confidenceList: this.confidenceList,
                         surpriseValue: this.surpriseValue,
-                        complexValue: this.complexValue,
+                        frustrateValue: this.frustrateValue,
                         enjoyValue: this.enjoyValue,
                         finalGuess: this.videoGuess,
                         numStops: this.numStops,
                         stopsArray: this.stopsArray,
                         stopsPercentArray: this.stopsPercentArray,
                         vidDurr: this.vidDurr,
-                        alreadyKnowList: this.alreadyKnowList
+                        alreadyKnowList: this.alreadyKnowList,
+                        stoppedEarly: this.stoppedEarly ? 1 : 0,
+                        sameAsBefore: this.sameAsBefore ? 1 : 0,
+                        surpriseDontKnow: this.surpriseDontKnow ? 1 : 0,
                     });
 
                     document.getElementById("finalGuess").style.display = "none";
                     document.getElementById("curiosityMeasure").style.display = "none";
 
                     this.videoIndex++;
-                    // console.log("The Current video index is", this.videoIndex);
                     this.videoGuess = "";
                     this.alreadyKnow = false;
+                    this.sameAsBefore = false;
                     this.alreadyKnowList = [];
                     this.curiosityValue = 50;
                     this.confidenceValue = 50;
@@ -211,10 +284,10 @@ var Curiosity = function() {
                     this.answeredConfidenceValue = 0;
                     this.surpriseValue = 50;
                     this.enjoyValue = 50;
-                    this.complexValue = 50;
+                    this.frustrateValue = 50;
                     this.answeredSurpriseValue = 0;
                     this.answeredEnjoyValue = 0;
-                    this.answeredComplexValue = 0;
+                    this.answeredFrustrateValue = 0;
                     this.finalGuessPlaceholder = "";
                     this.finalGuess = "";
                     this.validVideoGuess = 0;
@@ -224,11 +297,15 @@ var Curiosity = function() {
                     this.stopsArray = [];
                     this.stopsPercentArray = [];
                     this.vidDurr = 0;
+                    this.stoppedEarly = false;
+                    this.surpriseDontKnow = false;
 
                     this.midPointMarkers(this.videoIndex);
                     let myVideo = document.getElementById("video");
 
                     if (this.videoIndex > this.videoList.length - 1) {
+                        //TODO this might be were to add additional function for termination (also I wonder if you could have two
+                        // separate lists for main videos and then extra videos)
                         currentview = new Questionnaire();
                     } else {
                         myVideo.src = this.videoList[this.videoIndex].src;
@@ -258,8 +335,9 @@ var Curiosity = function() {
                         return Math.floor(rnd * (1 - mix) + bias * mix);
                     }
                     //Get new random stops
-                    this.numStops = getRndBias(1, 3, 2, 1);
+                    this.numStops = getRndBias(1, 3, 2.5, 0.8);
                     // console.log(this.numStops);
+                    //for study 2, not using a bias but constraining selection of stops to between 2-3 (more stops)
 
                     let quartiles = [];
                     if (this.numStops === 1) {
@@ -294,14 +372,12 @@ var Curiosity = function() {
                     }
                     this.stopsArray = stops.sort();
                     this.stopsPercentArray = stopsPercent.sort();
-                    console.log(this.numStops, this.stopsArray, this.vidDurr);
                 }
             },
             makeVidDurr(){
                 if(this.videoBool){
                     var myVideo = document.getElementById("video");
                     this.vidDurr = myVideo.duration;
-                    // console.log(myVideo.duration, this.vidDurr);
                     if (this.arrayMade === 0){
                         myVideo.pause();
                         this.makeStops();
@@ -327,13 +403,11 @@ var Curiosity = function() {
                     // this.testInput();
                 }
             },
-            testInput() {
+            testInput(callback) {
                 let myVideo = document.getElementById("video");
-                // let keyCode = event.keyCode;
                 this.checkVideoGuess(this.videoGuess);
                 if (this.answeredFinishValue === 1 && this.answeredConfidenceValue === 1 && (this.answeredCuriosityValue === 1 || this.alreadyKnow) && this.validVideoGuess === 1) {
 
-                    //if (this.validVideoGuess === 1) {
                     myVideo.play();
                     this.iterIndex++;
                     this.guessList.push(this.videoGuess);
@@ -351,31 +425,38 @@ var Curiosity = function() {
                     this.finishValue = 50;
                     this.confidenceValue = 50;
                     document.getElementById("interruptionMeasure").style.display = "none";
+                    return true;
+
                 } else {
                     alert("Please answer all questions");
+                    return false;
                 }
             },
-            // finalGuessMethod(finalGuessPlaceholder) {
-            //     if (finalGuessPlaceholder.length <= 1) {
-            //         alert("Please Enter a Valid Guess");
-            //         this.finalGuessPlaceholder = "";
-            //     } else {
-            //         this.validVideoGuess = 1;
-            //         this.finalGuess = this.finalGuessPlaceholder;
-            //         this.finalGuessPlaceholder = "";
-            //     }
-            // },
-            finishedVideo() {
+            //function for advancing video to the end (stops reveal)
+            advanceVideo() {
+                let test = this.testInput();
+                if (test) {
+                    this.finishedVideo();
+                }
+                this.stoppedEarly = true;
+            },
+            //function for skipping the video to the end (immediate reveal)
+            skipToEnd() {
+                let myVideo = document.getElementById("video");
+                let test = this.testInput();
+                if (test) {
+                    this.iterIndex = this.stopsArray.length;
+                    myVideo.currentTime = myVideo.duration;
+                    this.finishedVideo();
+                }
+                this.stoppedEarly = true;
+            },
+            finishedVideo() { //guess=""
                 var myVideo = document.getElementById("video");
-                // console.log("finished video!");
-                let vidTime = myVideo.currentTime;
-                // console.log("Video Timestamp: " + vidTime);
-                document.getElementById("finalGuess").style.display = "inline";
-                document.getElementById("videoGuess").style.display = "none";
-                // document.getElementById("displayGuess").style.display = "none";
-                document.getElementById("curiosityMeasure").style.display = "block";
                 myVideo.pause();
-                document.getElementById("finalGuess").focus();
+                document.getElementById("finalGuess").style.display = "inline";
+                document.getElementById("curiosityMeasure").style.display = "block";
+                // document.getElementById("finalGuess").focus();
                 document.getElementById("finalGuess").select();
             },
             sliderFxn_curiosity() {
@@ -403,14 +484,14 @@ var Curiosity = function() {
                 this.enjoyValue = slider.value;
                 this.answeredEnjoyValue = 1;
             },
-            sliderFxn_complex() {
-                var slider = document.getElementById("slider_complex");
-                this.complexValue = slider.value;
-                this.answeredComplexValue = 1;
+            sliderFxn_frustrate() {
+                var slider = document.getElementById("slider_frustrate");
+                this.frustrateValue = slider.value;
+                this.answeredFrustrateValue = 1;
             },
             checkVideoGuess(videoGuess) {
-                if (videoGuess.length <= 1) {
-                    alert("Please Enter a Valid Guess");
+                if (videoGuess.length <= 1 && this.sameAsBefore === false) {
+                    alert("Please enter a guess more than 2 characters");
                     this.videoGuess = "";
                 }
                 else {
@@ -418,9 +499,9 @@ var Curiosity = function() {
                 }
             },
             midPointMarkers(videoIndex) {
-                if (videoIndex === 15) {
+                if (videoIndex === 20) {
                     alert("15 videos left");
-                } else if (videoIndex === 25) {
+                } else if (videoIndex === 30) {
                     alert("5 videos left");
                 }
             },
@@ -500,10 +581,12 @@ var currentview;
  ******************/
 
 $(window).load(function () {
+    //get random number 1 - 5
+    // var randomNumber = 1;
     psiTurk.doInstructions(
         instructionPages, // a list of pages you want to display in sequence
         function () {
-            currentview = new Curiosity();
+            currentview = new Curiosity(); //stageHtmlName[randomNumber]
         } // what you want to do when you are done with instructions
     );
 });
