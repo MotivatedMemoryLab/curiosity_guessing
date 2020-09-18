@@ -2,7 +2,7 @@
 {% raw %}
 
 <div id = "app" class = "container">
-    <h1>Video Drawing Experiment</h1>
+    <h1>Video Guessing Game</h1>
     <div id = "welcome">
         <p>
             <strong>Welcome to the Video Guessing Experiment by the Adcock Lab at Duke University!</strong>
@@ -28,11 +28,11 @@
         <p>
             At the end of each pause, you get to decide whether you would like to <strong>continue watching the current
             video ("Continue Watching")</strong> or <strong>move on to the next video ("Advance to Next")</strong> by
-            selecting the appropriate button. If you elect to move on to the next video, you will also <strong>not be able to
+            selecting the appropriate button. If you elect to move on to the next video, you will <strong>not be able to
             see the final drawing.</strong>
         </p>
         <p>
-            When watching these videos please try your best to <strong>focus your attention on the drawing
+            When watching these videos please try your best to <strong>focus your attention on the line
             to give us the best understanding of how and when you can identify what it being drawn.</strong>
         </p>
 
@@ -52,7 +52,7 @@
             the end of each video. After you answer these questions, you can move on to the next video.
         </p>
         <p>
-            At the end of a trial, you will have the option to <strong> rewatch the video</strong> or <strong>advance
+            At the end of a trial, you will have the option to <strong>rewatch the video</strong> or <strong>move
             to the next video</strong>. To select either option, you must first <u>type in your final guess</u> and
             <u>again, move ALL slider scales</u>. You, again, will be prompted to answer all of the questions if you
             happen to forget one.
@@ -97,6 +97,10 @@
             </video>
             <div id = "interruptionMeasure">
                 <br>
+                <p >
+                    Guess? <input id = "videoGuess"  ref = "videoGuess" type = "text" placeholder="Enter Guess"
+                                  v-model = "videoGuess">
+                </p>
                 <p>
                     <strong>How much do you <u>WANT TO KNOW</u> what the drawing is going to be?</strong>
                     <br>NOT at all <input class = "slider" id = "slider_cur" type = "range" min = '1' max = "100"
@@ -105,18 +109,14 @@
                     <label for="known">Already Know</label>
                 </p>
                 <p>
-                    <strong>How much do you want to <u>FINISH WATCHING</u> the rest of the video?</strong>
-                    <br>NOT at all <input class = "slider" id = "slider_fin" type = "range" min = '1' max = "100"
-                                          v-bind:value = "finishValue" @input = "sliderFxn_finish"> VERY Much
-                </p>
-                <p>
                     <strong>How <u>CONFIDENT</u> are you about what the drawing is going to be?</strong>
                     <br>NOT confident <input class = "slider" id = "slider_confidence" type = "range" min = '1' max = "100"
                                              v-bind:value = "confidenceValue" @input = "sliderFxn_confidence"> VERY confident
                 </p>
-                <p >
-                    Guess? <input id = "videoGuess"  ref = "videoGuess" type = "text" placeholder="Enter Guess"
-                                  v-model = "videoGuess">
+                <p>
+                    <strong>How <u>FRUSTRATED</u> does the video make you feel right now?</strong>
+                    <br>NOT at all <input class = "slider" id = "slider_frustrate" type = "range" min = '1' max = "100"
+                                          v-bind:value = "frustrateValue" @input = "sliderFxn_frustrate"> VERY Much
                 </p>
                 <br>
                     <button @click = "testInput" class = "button">Continue Watching</button>
@@ -128,8 +128,10 @@
             <div id = "curiosityMeasure">
                 <br>
                 <p>
-                    Your last guess was (type to change or submit as is): <input id = "finalGuess"  ref = "videoGuess" type = "text"
+                    Enter your FINAL guess: <input id = "finalGuess"  ref = "videoGuess" type = "text"
                                                               placeholder="Enter Guess" v-model = "videoGuess">
+                    <input type="checkbox" id="SAB" v-model="sameAsBefore">
+                    <label for="known">Same as Before</label>
                 </p>
                <p>
                    <strong>How <u>SURPRISED</u> were you when you realized what the picture was?</strong>
@@ -139,23 +141,34 @@
                    <label for="sur_dk">I still don't know</label>
                 </p>
                  <p>
-                     <strong>How much did you <u>ENJOY</u> watching this video?</strong>
-                     <br>NO enjoyment <input id = "slider_enjoy" class = "slider" type = "range" min = '1' max = "100"
-                                             v-bind:value = "enjoyValue" @input = "sliderFxn_enjoy"> A LOT of enjoyment
+                     <strong>How <u>SATISFYING</u> was it to watch this video?</strong>
+                     <br>NOT satisfying <input id = "slider_satisfy" class = "slider" type = "range" min = '1' max = "100"
+                                             v-bind:value = "satisfyValue" @input = "sliderFxn_satisfy"> VERY satisfying
                 </p>
                 <p>
-                    <strong>How <u>FRUSTRATING</u> did you find this video?</strong>
-                    <br>NOT frustrating <input id = "slider_frustrate" class = "slider" type = "range" min = '1' max = "100"
-                                           v-bind:value = "frustrateValue" @input = "sliderFxn_frustrate"> VERY frustrating
+                    <strong>How <u>APPEALING</u> do you find this image?</strong>
+                    <br>NOT appealing <input id = "slider_appeal" class = "slider" type = "range" min = '1' max = "100"
+                                           v-bind:value = "appealValue" @input = "sliderFxn_appeal"> VERY appealing
+                </p>
+                <p>
+                    <strong>How much do you <u>WANT TO WATCH</u> the next video?</strong>
+                    <br>NOT at all <input id = "slider_upcoming" class = "slider" type = "range" min = '1' max = "100"
+                                           v-bind:value = "upcomingCuriosityValue" @input = "sliderFxn_upcoming"> VERY much
                 </p>
                 <br>
                 <p>
+                    <button @click = "replayVideo" class = "button">Replay Video</button>
                     <button @click = "nextVideo" class = "button">Next Video</button>
                 </p>
+            </div>
+            <div id = "terminateExperiment">
+                <br>
+                <button @click = "terminateExp" class = "button">Stop Experiment</button>
             </div>
         </div>
 
     </div>
+
 
 </div>
 

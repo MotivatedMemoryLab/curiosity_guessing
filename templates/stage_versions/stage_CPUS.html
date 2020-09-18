@@ -5,7 +5,7 @@
     <h1>Video Guessing Game</h1>
     <div id = "welcome">
         <p>
-            <strong>Welcome to the Video Experiment by the Adcock Lab at Duke University!</strong>
+            <strong>Welcome to the Video Guessing Experiment by the Adcock Lab at Duke University!</strong>
         </p>
         <p>
             Please carefully review the instructions below and on the following page about how to navigate the task.
@@ -13,8 +13,8 @@
                 the task.</strong>
         </p>
             In each video you watch, there will be randomly placed pauses, <strong>between 1 - 3 per video,</strong>
-            where we will ask you to answer a couple questions about the video (e.g. How much do you want to see the
-            rest of the drawing?).
+            where we will ask you to answer a few questions about the video (e.g. How much do you want to see the
+            rest of the drawing? or How confident are you about what the drawing is going to be?).
         <p>
         <p>
             We will also ask you to make a guess about what you think the drawing will be. We expect your guess might
@@ -26,12 +26,12 @@
             write "hamster" instead of "animal" or "Winter White Dwarf hamster".
         </p>
         <p>
-            At the end of each pause, you get to decide whether you would like to <strong>continue watching the video ("Continue
-            Watching")</strong> or <strong>move on to the next video ("Advance to Next")</strong> by selecting the appropriate button. If you
-            elect to move on to the next video, you will also not be able to see the final drawing.
+            At the end of each pause, you get to decide whether you would like to <strong>continue watching the current
+            video ("Continue Watching")</strong> or <strong>skip to the end ("Skip to End")</strong> by
+            selecting the appropriate button. If you skip to the end, the video will be fast-forwarded to the final drawing.
         </p>
         <p>
-            When watching these videos please try your best to <strong>focus your attention on the drawing
+            When watching these videos please try your best to <strong>focus your attention on the line
             to give us the best understanding of how and when you can identify what it being drawn.</strong>
         </p>
 
@@ -39,33 +39,46 @@
     </div>
     <div id = "startExp" >
         <p>
-            <strong>Videos will start playing automatically when you hit the button to advance (including the "Start"
-                button below).</strong>
-        </p>
-        <p>
             <strong>To continue playing the video after it's been paused or to advance to the next video</strong>,
-            you must <u>answer all 4 questions</u> and then <strong>press the Continue Watching Button</strong> to
-            continue watching or <strong>press the Advance to Next Button</strong> to bring up the post-video questions.
-            You will be prompted to answer all 4 questions if you happen to forget one. You must move <strong>all</strong>
+            you must <u>answer all questions</u> and then <strong>press the Continue Watching Button</strong> to
+            continue watching or <strong>press the Skip To End Button</strong> to bring up the final image.
+            You will be prompted to answer all the questions if you happen to forget one. You must move <strong>all</strong>
             sliders on the screen (if your answer is at the mid-point of a slider you must move it off and back into
             the middle).
         </p>
         <p>
-            If you choose to advance to the next video, you will first be brought to the questions you will answer at
+            If you choose to skip to the end of a video, you will first be brought to the questions you would answer at
             the end of each video. After you answer these questions, you can move on to the next video.
         </p>
         <p>
-            <strong>To advance to the next video</strong>, you must first <u>type in your final guess</u> and <u>again, move ALL
-            slider scales</u>. After these things are done the <strong>"Next Video" button will take you to the next video.</strong>
-            You, again, will be prompted to answer all 4 questions if you happen to forget one.
+            At the end of a trial, you will have the option to <strong>rewatch the video</strong> or <strong>move
+            to the next video</strong>. To select either option, you must first <u>type in your final guess</u> and
+            <u>again, move ALL slider scales</u>. You, again, will be prompted to answer all of the questions if you
+            happen to forget one.
+        </p>
+        <p>
+            After these things are done the <strong>"Next Video" button will take you to the next
+            video</strong> and the <strong> "Re-watch" button will play the video again,</strong> this time with
+            <u>no interruptions.</u>
         </p>
         <p>
             You will receive alerts that you are <strong>halfway</strong> through the task and when you have
-            <strong>5</strong> videos left to go. Again, we anticipate the task taking about 30-35 minutes to complete.
+            <strong>5</strong> videos left to go. Again, we anticipate the task taking about 25-30 minutes to complete.
+        </p>
+        <p>
+            At the end of the 25 pre-selected videos, you will have the option to <strong>continue watching more videos</strong>
+            if you want to. These additional videos will function just like the previous ones except now <strong>you will
+            have the option to terminate the experiment</strong> either during the video (at pause points) or after the
+            video has finished. At this point, you may watch as many or as few of the videos as you want to. These videos
+            are a bonus and do not impact your compensation.
         </p>
         <p>
             Depending on you browser and internet connection, sometimes a video will freeze for a handful of seconds.
             If this happens, please <strong>DO NOT try to hit the Refresh button or move backwards in the task.</strong>
+        </p>
+        <p>
+            <strong>Videos will start playing automatically when you hit the button to advance (including the "Start"
+                button below).</strong>
         </p>
         <p>
             Press <strong>start</strong> to begin the task.
@@ -74,7 +87,7 @@
         <button class = "button" @click = "continueToStart">Start</button>
 
     </div>
-    <div id = "video1" class = "videos">
+     <div id = "video1" class = "videos">
 
         <div v-for = "x in videoList" v-if = "x == videoList[videoIndex]">
             <video id = "video" width = "620" height = "auto" autoplay muted  @ended = "finishedVideo"
@@ -95,9 +108,9 @@
                     <label for="known">Already Know</label>
                 </p>
                 <p>
-                    <strong>How <u>CONFIDENT</u> are you about what the drawing is going to be?</strong>
-                    <br>NOT confident <input class = "slider" id = "slider_confidence" type = "range" min = '1' max = "100"
-                                             v-bind:value = "confidenceValue" @input = "sliderFxn_confidence"> VERY confident
+                    <strong>How <u>MUCH MORE</u> of the video do you need to see before you will know what the drawing is?</strong>
+                    <br>0 more seconds <input class = "slider" id = "slider_pre" type = "range" min = '0' max = "30"
+                                             v-bind:value = "predictValue" @input = "sliderFxn_predict"> 30 more seconds
                 </p>
                 <p>
                     <strong>How <u>UNSETTLED</u> does the video make you feel?</strong>
