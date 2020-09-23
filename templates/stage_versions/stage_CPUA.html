@@ -4,89 +4,103 @@
 <div id = "app" class = "container">
     <h1>Video Guessing Game</h1>
     <div id = "welcome">
-        <p>
-            <strong>Welcome to the Video Guessing Experiment by the Adcock Lab at Duke University!</strong>
-        </p>
+        <h3><strong>Welcome to the Video Guessing Experiment by the Adcock Lab at Duke University!</strong></h3>
         <p>
             Please carefully review the instructions below and on the following page about how to navigate the task.
             <strong>These will not be repeated and you will not be able to return to the instructions once you start
                 the task.</strong>
         </p>
-            In each video you watch, there will be randomly placed pauses, <strong>between 1 - 3 per video,</strong>
-            where we will ask you to answer a few questions about the video (e.g. How much do you want to see the
-            rest of the drawing? or How confident are you about what the drawing is going to be?).
+        <br>
+        <h3><strong>How to Guess</strong></h3>
         <p>
+            While you watch these short videos, there will be randomly placed pauses, <strong>between 1 - 3 per video,</strong>
+            where we will ask you <strong>what you think the drawing is going to turn into.</strong> For example, as you
+            watch a video you might first see the line move upwards and maybe you think it's going to be a mountain.
+            But after a couple more moments, the drawing starts to look more like a boat. So, when you encounter a pause-point,
+            throughout the video we want to know what your current guess is (e.g. mountain, or boat).
+        </p>
         <p>
-            We will also ask you to make a guess about what you think the drawing will be. We expect your guess might
-            evolve or change over the video and we are interested in what that process looks like. If you do not have a
-            guess to make, simply write "idk" (I don't know) or "none".
+            We expect your guess might evolve or change over the video and we are interested in what that process looks like.
+            If you do not have a guess to make, simply write "idk" (I don't know) or "none".
         </p>
         <p>
             Try to use the most common English words for your guesses. For example, if you see an image of a hamster
             write "hamster" instead of "animal" or "Winter White Dwarf hamster".
         </p>
         <p>
-            At the end of each pause, you get to decide whether you would like to <strong>continue watching the current
-            video ("Continue Watching")</strong> or <strong>move on to the next video ("Advance to Next")</strong> by
-            selecting the appropriate button. If you elect to move on to the next video, you will <strong>not be able to
-            see the final drawing.</strong>
-        </p>
-        <p>
             When watching these videos please try your best to <strong>focus your attention on the line
             to give us the best understanding of how and when you can identify what it being drawn.</strong>
         </p>
+        <br>
+        <h3><strong>How to Answer Questions About the Videos</strong></h3>
+        <p>
+            After you have typed out your guess, you will be asked to answer a few questions about the video
+            (e.g. How much do you want to see the rest of the drawing?).
+        </p>
+        <p>
+            You must make a response to <strong>all</strong> questions on the screen. <strong>If your response is "0" for
+            any of the sliding scales, you still have to click the sliding circle to register a response.</strong> You will
+            be prompted to answer all the questions if you happen to forget one.
+        </p>
+        <br>
+        <h3><strong>How to Get Back to the Videos</strong></h3>
+        <p>
+            After responding to the questions, you get to decide whether you would like to <strong>continue watching the current
+            video ("Continue Watching")</strong> or <strong>move on to the next video ("Advance to Next")</strong> by
+            selecting the appropriate button. If you elect to move on to the next video, you will not be able
+            to see the final drawing. Before you can move to the next video, you will first be asked to answer the questions you would answer at
+            the end of each video.
+        </p>
+        <br>
+        <p>
+            <strong>Press Next to continue reading instructions.</strong>
+        </p>
 
-        <button id = "startButton" class = "button" @click = "startExp">Continue</button>
+        <button id = "startButton" class = "button" @click = "startExp">Next</button>
     </div>
     <div id = "startExp" >
+        <h3><strong>How to Move from Video to Video</strong></h3>
         <p>
-            <strong>To continue playing the video after it's been paused or to advance to the next video</strong>,
-            you must <u>answer all questions</u> and then <strong>press the Continue Watching Button</strong> to
-            continue watching or <strong>press the Advance to Next Button</strong> to bring up the post-video questions.
-            You will be prompted to answer all the questions if you happen to forget one. You must move <strong>all</strong>
-            sliders on the screen (if your answer is at the mid-point of a slider you must move it off and back into
-            the middle).
+            At the end of a trial, you will have the option to <strong>replay the video ("Replay Video")</strong>, this time with
+            <u>no interruptions</u> or <strong>move to the next video ("Next Video")</strong>. To select either option,
+            you must first type in your final guess and again, make a response to <strong>ALL</strong> slider scales. You,
+            again, will be prompted to answer all of the questions if you happen to forget one.
         </p>
+        <br>
+        <h3><strong>How to End or Continue the Game</strong></h3>
         <p>
-            If you choose to advance to the next video, you will first be brought to the questions you would answer at
-            the end of each video. After you answer these questions, you can move on to the next video.
-        </p>
-        <p>
-            At the end of a trial, you will have the option to <strong>rewatch the video</strong> or <strong>move
-            to the next video</strong>. To select either option, you must first <u>type in your final guess</u> and
-            <u>again, move ALL slider scales</u>. You, again, will be prompted to answer all of the questions if you
-            happen to forget one.
-        </p>
-        <p>
-            After these things are done the <strong>"Next Video" button will take you to the next
-            video</strong> and the <strong> "Re-watch" button will play the video again,</strong> this time with
-            <u>no interruptions.</u>
-        </p>
-        <p>
-            You will receive alerts that you are <strong>halfway</strong> through the task and when you have
-            <strong>5</strong> videos left to go. Again, we anticipate the task taking about 25-30 minutes to complete.
-        </p>
-        <p>
-            At the end of the 25 pre-selected videos, you will have the option to <strong>continue watching more videos</strong>
+            Once you've watched the 25 pre-selected videos, you can choose to <strong>continue watching more videos</strong>
             if you want to. These additional videos will function just like the previous ones except now <strong>you will
-            have the option to terminate the experiment</strong> either during the video (at pause points) or after the
-            video has finished. At this point, you may watch as many or as few of the videos as you want to. These videos
-            are a bonus and do not impact your compensation.
+            have the option to stop the game</strong> either during the video (at pause points) or after the
+            video has finished.
         </p>
         <p>
-            Depending on you browser and internet connection, sometimes a video will freeze for a handful of seconds.
-            If this happens, please <strong>DO NOT try to hit the Refresh button or move backwards in the task.</strong>
+            At this point, you may watch as many or as few of the videos as you want to. These additional videos
+            do not impact your compensation.
         </p>
+        <br>
+        <h4><strong>Practical Information for Playing the Game</strong></h4>
+        <ul>
+              <li>You must make a response to <strong>all</strong> questions on the screen. <strong>If your response is "0"
+                  for any of the sliding scales, you still have to click the sliding circle to register a response.</strong></li>
+              <li>You will receive alerts that you are <strong>halfway</strong> through the task and when you have
+            <strong>5</strong> videos left to go. Again, we anticipate the task taking about 25-30 minutes to complete.</li>
+              <li>Depending on your browser and internet connection, sometimes a video will freeze for a handful of seconds.
+                 If this happens, please <strong>DO NOT try to hit the Refresh button or move backwards in the task.</strong></li>
+        </ul>
+        <br>
+        <h3><strong>How to Start!</strong></h3>
         <p>
             <strong>Videos will start playing automatically when you hit the button to advance (including the "Start"
                 button below).</strong>
         </p>
         <p>
-            Press <strong>start</strong> to begin the task.
+            If you would like to begin the experiment, please enter your Prolific ID below and press the <strong>START</strong> button. </p>
+            <input id = "subjectId" type = "text" placeholder="Enter Prolific Id..." v-model = "subjectId">
         </p>
+        <br>
 
         <button class = "button" @click = "continueToStart">Start</button>
-
     </div>
     <div id = "video1" class = "videos">
 
@@ -95,7 +109,7 @@
                    @loadedmetadata = "makeVidDurr" @timeupdate = "pauseOnStops">
                 <source v-bind:src = "x.src" v-bind:type = "x.type">
             </video>
-            <div id = "interruptionMeasure">
+            <div id = "interruptionMeasure" class = "notAtStart">
                 <br>
                 <p >
                     Guess? <input id = "videoGuess"  ref = "videoGuess" type = "text" placeholder="Enter Guess"
@@ -103,20 +117,20 @@
                 </p>
                 <p>
                     <strong>How much do you <u>WANT TO KNOW</u> what the drawing is going to be?</strong>
-                    <br>NOT at all <input class = "slider" id = "slider_cur" type = "range" min = '1' max = "100"
-                                          v-bind:value = "curiosityValue" @input = "sliderFxn_curiosity"> VERY Much,
+                    <br>NOT at all <input class = "slider" id = "slider_cur" type = "range" min = '0' max = "100"
+                                          v-bind:value = "curiosityValue" @click = "sliderFxn_curiosity"> VERY Much,
                     <input type="checkbox" id="known" v-model="alreadyKnow">
                     <label for="known">Already Know</label>
                 </p>
                 <p>
                     <strong>How <u>MUCH MORE</u> of the video do you need to see before you will know what the drawing is?</strong>
                     <br>0 more seconds <input class = "slider" id = "slider_pre" type = "range" min = '0' max = "30"
-                                             v-bind:value = "predictValue" @input = "sliderFxn_predict"> 30 more seconds
+                                             v-bind:value = "predictValue" @click = "sliderFxn_predict"> 30 more seconds
                 </p>
                 <p>
-                    <strong>How <u>UNSETTLED</u> does the video make you feel?</strong>
-                    <br>NOT at all <input class = "slider" id = "slider_unsettled" type = "range" min = '1' max = "100"
-                                          v-bind:value = "unsettledValue" @input = "sliderFxn_unsettled"> VERY Much
+                    <strong>How <u>UNSETTLED</u> does watching this video make you feel right now?</strong>
+                    <br>NOT at all <input class = "slider" id = "slider_unsettled" type = "range" min = '0' max = "100"
+                                          v-bind:value = "unsettledValue" @click = "sliderFxn_unsettled"> VERY Much
                 </p>
                 <br>
                     <button @click = "testInput" class = "button">Continue Watching</button>
@@ -125,7 +139,7 @@
 
                 </p>
             </div>
-            <div id = "curiosityMeasure">
+            <div id = "curiosityMeasure" class = "notAtStart">
                 <br>
                 <p>
                     Enter your FINAL guess: <input id = "finalGuess"  ref = "videoGuess" type = "text"
@@ -135,25 +149,25 @@
                 </p>
                <p>
                    <strong>How <u>SURPRISED</u> were you when you realized what the picture was?</strong>
-                   <br>NOT surprised <input id = "slider_surprise" class = "slider" type = "range" min = '1' max = "100"
-                                            v-bind:value = "surpriseValue" @input = "sliderFxn_surprise"> VERY surprised,
+                   <br>NOT surprised <input id = "slider_surprise" class = "slider" type = "range" min = '0' max = "100"
+                                            v-bind:value = "surpriseValue" @click = "sliderFxn_surprise"> VERY surprised,
                    <input type="checkbox" id="sur_dk" v-model="surpriseDontKnow">
                    <label for="sur_dk">I still don't know</label>
                 </p>
                  <p>
                      <strong>How <u>SATISFYING</u> was it to watch this video?</strong>
-                     <br>NOT satisfying <input id = "slider_satisfy" class = "slider" type = "range" min = '1' max = "100"
-                                             v-bind:value = "satisfyValue" @input = "sliderFxn_satisfy"> VERY satisfying
+                     <br>NOT satisfying <input id = "slider_satisfy" class = "slider" type = "range" min = '0' max = "100"
+                                             v-bind:value = "satisfyValue" @click = "sliderFxn_satisfy"> VERY satisfying
                 </p>
                 <p>
                     <strong>How <u>APPEALING</u> do you find this image?</strong>
-                    <br>NOT appealing <input id = "slider_appeal" class = "slider" type = "range" min = '1' max = "100"
-                                           v-bind:value = "appealValue" @input = "sliderFxn_appeal"> VERY appealing
+                    <br>NOT appealing <input id = "slider_appeal" class = "slider" type = "range" min = '0' max = "100"
+                                           v-bind:value = "appealValue" @click = "sliderFxn_appeal"> VERY appealing
                 </p>
                 <p>
                     <strong>How much do you <u>WANT TO WATCH</u> the next video?</strong>
-                    <br>NOT at all <input id = "slider_upcoming" class = "slider" type = "range" min = '1' max = "100"
-                                           v-bind:value = "upcomingCuriosityValue" @input = "sliderFxn_upcoming"> VERY much
+                    <br>NOT at all <input id = "slider_upcoming" class = "slider" type = "range" min = '0' max = "100"
+                                           v-bind:value = "upcomingCuriosityValue" @click = "sliderFxn_upcoming"> VERY much
                 </p>
                 <br>
                 <p>

@@ -8,26 +8,23 @@
 // Initalize psiturk object
 var psiTurk = new PsiTurk(uniqueId, adServerLoc, mode);
 
-//TODO : BIG QUESTION: can organic and controlled guessing be run out of the same js file?
-
 // All pages to be loaded
-//TODO add all pages here <-- version unique instructions will be limited to stage.html versions
 var pages = [
 	"instructions/instruct-all-versions.html",
     "stage_versions/stage.html",
     "postquestionnaire.html", //TODO: edit post-questionnaire survey
-    // "stage_versions/stage_OCFA.html",
-    // "stage_versions/stage_OCFS.html",
-    // "stage_versions/stage_OCUA.html",
-    // "stage_versions/stage_OCUS.html",
-    // "stage_versions/stage_OCEA.html",
-    // "stage_versions/stage_OCES.html",
-    // "stage_versions/stage_OPFA.html",
-    // "stage_versions/stage_OPFS.html",
-    // "stage_versions/stage_OPUA.html",
-    // "stage_versions/stage_OPUS.html",
-    // "stage_versions/stage_OPEA.html",
-    // "stage_versions/stage_OPES.html",
+    "stage_versions/stage_OCFA.html",
+    "stage_versions/stage_OCFS.html",
+    "stage_versions/stage_OCUA.html",
+    "stage_versions/stage_OCUS.html",
+    "stage_versions/stage_OCEA.html",
+    "stage_versions/stage_OCES.html",
+    "stage_versions/stage_OPFA.html",
+    "stage_versions/stage_OPFS.html",
+    "stage_versions/stage_OPUA.html",
+    "stage_versions/stage_OPUS.html",
+    "stage_versions/stage_OPEA.html",
+    "stage_versions/stage_OPES.html",
     "stage_versions/stage_CCFA.html",
     "stage_versions/stage_CCFS.html",
     "stage_versions/stage_CCUA.html",
@@ -43,40 +40,37 @@ var pages = [
 ];
 
 psiTurk.preloadPages(pages);
-console.log(pages)
 
 var instructionPages = [
 	"instructions/instruct-all-versions.html"
 ];
 
-//TODO add new pages to below mappings
-
-// var stageHtmlName = {
-//     1: {version: OCFA, stage_file: "stage_versions/stage_OCFA.html", skip: true},
-//     2: "stage_versions/stage_OCFS.html",
-//     3: "stage_versions/stage_OCUA.html",
-//     4: "stage_versions/stage_OCUS.html",
-//     5: "stage_versions/stage_OCEA.html",
-//     6: "stage_versions/stage_OCES.html",
-//     7: "stage_versions/stage_OPFA.html",
-//     8: "stage_versions/stage_OPFS.html",
-//     9: "stage_versions/stage_OPUA.html",
-//     10: "stage_versions/stage_OPUS.html",
-//     11: "stage_versions/stage_OPEA.html",
-//     12: "stage_versions/stage_OPES.html",
-//     13: "stage_versions/stage_CCFA.html",
-//     14: "stage_versions/stage_CCFS.html",
-//     15: "stage_versions/stage_CCUA.html",
-//     16: "stage_versions/stage_CCUS.html",
-//     17: "stage_versions/stage_CCEA.html",
-//     18: "stage_versions/stage_CCES.html",
-//     19: "stage_versions/stage_CPFA.html",
-//     20: "stage_versions/stage_CPFS.html",
-//     21: "stage_versions/stage_CPUA.html",
-//     22: "stage_versions/stage_CPUS.html",
-//     23: "stage_versions/stage_CPEA.html",
-//     24: "stage_versions/stage_CPES.html",
-// };
+var stageHtmlName = {
+    1: {stageFile: "stage_versions/stage_CCFA.html", controlled:true, studyType: "CCFA"},
+    2: {stageFile: "stage_versions/stage_CCFS.html", controlled:true, studyType: "CCFS"},
+    3: {stageFile: "stage_versions/stage_CCUA.html", controlled:true, studyType: "CCUA"},
+    4: {stageFile: "stage_versions/stage_CCUS.html", controlled:true, studyType: "CCUS"},
+    5: {stageFile: "stage_versions/stage_CCEA.html", controlled:true, studyType: "CCEA"},
+    6: {stageFile: "stage_versions/stage_CCES.html", controlled:true, studyType: "CCES"},
+    7: {stageFile: "stage_versions/stage_CPFA.html", controlled:true, studyType: "CPFA"},
+    8: {stageFile: "stage_versions/stage_CPFS.html", controlled:true, studyType: "CPFS"},
+    9: {stageFile: "stage_versions/stage_CPUA.html", controlled:true, studyType: "CPUA"},
+    10: {stageFile: "stage_versions/stage_CPUS.html", controlled:true, studyType: "CPUS"},
+    11: {stageFile: "stage_versions/stage_CPEA.html", controlled:true, studyType: "CPEA"},
+    12: {stageFile: "stage_versions/stage_CPES.html", controlled:true, studyType: "CPES"},
+    13: {stageFile: "stage_versions/stage_OCFA.html", controlled:false, studyType: "OCFA"},
+    14: {stageFile: "stage_versions/stage_OCFS.html", controlled:false, studyType: "OCFS"},
+    15: {stageFile: "stage_versions/stage_OCUA.html", controlled:false, studyType: "OCUA"},
+    16: {stageFile: "stage_versions/stage_OCUS.html", controlled:false, studyType: "OCUS"},
+    17: {stageFile: "stage_versions/stage_OCEA.html", controlled:false, studyType: "OCEA"},
+    18: {stageFile: "stage_versions/stage_OCES.html", controlled:false, studyType: "OCES"},
+    19: {stageFile: "stage_versions/stage_OPFA.html", controlled:false, studyType: "OPFA"},
+    20: {stageFile: "stage_versions/stage_OPFS.html", controlled:false, studyType: "OPFS"},
+    21: {stageFile: "stage_versions/stage_OPUA.html", controlled:false, studyType: "OPUA"},
+    22: {stageFile: "stage_versions/stage_OPUS.html", controlled:false, studyType: "OPUS"},
+    23: {stageFile: "stage_versions/stage_OPEA.html", controlled:false, studyType: "OPEA"},
+    24: {stageFile: "stage_versions/stage_OPES.html", controlled:false, studyType: "OPES"}
+};
 
 /********************
 * HTML manipulation
@@ -88,9 +82,8 @@ var instructionPages = [
 *
 ********************/
 
-var Curiosity = function() { // eventually function(parameters) where parameters is the JSON Object
-
-    psiTurk.showPage("stage_versions/stage_CPFS.html"); // eventually parameters.version when we get that worked out
+var Curiosity = function(stage_version) {
+    psiTurk.showPage(stage_version.stageFile);
     window.moveTo(0, 0);
     window.resizeTo(screen.width, screen.height);
 
@@ -99,8 +92,8 @@ var Curiosity = function() { // eventually function(parameters) where parameters
         el: "#app",
         data: {
             videoList: [
-                {src: "static/videos/brain.mp4", type: "video/mp4", answer: "Brain"},
-                {src: "static/videos/astronaut.mp4", type: "video/mp4", answer: "Astronaut"},
+                // {src: "static/videos/brain.mp4", type: "video/mp4", answer: "Brain"},
+                // {src: "static/videos/astronaut.mp4", type: "video/mp4", answer: "Astronaut"},
                 // {src: "static/videos/bananas.mp4", type: "video/mp4", answer: "Bananas"},
                 // {src: "static/videos/bellpepper.mp4", type: "video/mp4", answer: "Bell Pepper"},
                 // {src: "static/videos/ballerina.mp4", type: "video/mp4", answer: "Ballerina"},
@@ -111,9 +104,9 @@ var Curiosity = function() { // eventually function(parameters) where parameters
                 // {src: "static/videos/gamecontroller.mp4", type: "video/mp4", answer: "Game Controller"},
                 // {src: "static/videos/harp.mp4", type: "video/mp4", answer: "Harp"},
                 // {src: "static/videos/headphones.mp4", type: "video/mp4", answer: "Headphones"},
-                // {src: "static/videos/hotairballoon.mp4", type: "video/mp4", answer: "Hot Air Balloon"},
+                {src: "static/videos/hotairballoon.mp4", type: "video/mp4", answer: "Hot Air Balloon"},
                 // {src: "static/videos/microscope.mp4", type: "video/mp4", answer: "Microscope"},
-                // {src: "static/videos/palmtree.mp4", type: "video/mp4", answer: "Palm Tree"},
+                {src: "static/videos/palmtree.mp4", type: "video/mp4", answer: "Palm Tree"},
                 // {src: "static/videos/pizza.mp4", type: "video/mp4", answer: "Pizza"},
                 // {src: "static/videos/pencil.mp4", type: "video/mp4", answer: "Pencil"},
                 // {src: "static/videos/pineapple.mp4", type: "video/mp4", answer: "Pineapple"},
@@ -127,9 +120,9 @@ var Curiosity = function() { // eventually function(parameters) where parameters
             ],
 
             videoListExtra: [
-                {src: "static/videos/pomegranate.mp4", type: "video/mp4", answer: "Pomegranate"},
+                // {src: "static/videos/pomegranate.mp4", type: "video/mp4", answer: "Pomegranate"},
                 {src: "static/videos/squirrel.mp4", type: "video/mp4", answer: "Squirrel"},
-                // {src: "static/videos/pancakes.mp4", type: "video/mp4", answer: "Pancakes"},
+                {src: "static/videos/pancakes.mp4", type: "video/mp4", answer: "Pancakes"},
                 // {src: "static/videos/elephant.mp4", type: "video/mp4", answer: "Elephant"},
                 // {src: "static/videos/golfer.mp4", type: "video/mp4", answer: "Golfer"},
                 // {src: "static/videos/guitar.mp4", type: "video/mp4", answer: "Guitar"},
@@ -156,10 +149,11 @@ var Curiosity = function() { // eventually function(parameters) where parameters
             ],
 
             //Variables set once per study
-            version: "",
+            subjectId: "",
+            version: stage_version.studyType,
             endStudy: false,
             vidCount: 1, //TODO: this will need to change for real thing (also needs to happen at the actual last vid of experiment
-            vidExtra: 26,
+            isControlled: stage_version.controlled,
 
             //Variables collected once per trial
             videoIndex: 0,
@@ -167,12 +161,12 @@ var Curiosity = function() { // eventually function(parameters) where parameters
             finalGuess: "",
             sameAsBefore: false,
             finalGuessPlaceholder: "",
-            videoAnswer: "",
-            surpriseValue: 50,
+            trialAnswer: "",
+            surpriseValue: 0,
             surpriseDontKnow: false,
-            satisfyValue: 50,
-            appealValue: 50,
-            upcomingCuriosityValue: 50,
+            satisfyValue: 0,
+            appealValue: 0,
+            upcomingCuriosityValue: 0,
             answeredSurpriseValue: 0,
             answeredSatisfyValue: 0,
             answeredAppealValue: 0,
@@ -181,19 +175,21 @@ var Curiosity = function() { // eventually function(parameters) where parameters
             vidDurr: 0.0,
             videoBool: false,
             replayCount: 0,
+            replay: false,
+            cutShort: false,
 
             //Within Trial placeholders
             videoGuess: "",
             submitTime: 0,
             percentageSubmit: 0,
             alreadyKnow: false,
-            curiosityValue: 50,
-            finishValue: 50,
-            confidenceValue: 50,
-            predictValue: 50,
-            unsettledValue: 50,
-            enjoyValue: 50,
-            frustrateValue: 50,
+            curiosityValue: 0,
+            finishValue: 0,
+            confidenceValue: 0,
+            predictValue: 0,
+            unsettledValue: 0,
+            enjoyValue: 0,
+            frustrateValue: 0,
             answeredPredictValue: 0,
             answeredUnsettledValue: 0,
             answeredEnjoyValue: 0,
@@ -239,8 +235,8 @@ var Curiosity = function() { // eventually function(parameters) where parameters
                 // for normally run experiment (videos are all randomized)
                 document.getElementById("welcome").style.display = "none";
                 document.getElementById("startExp").style.display = "block";
+                window.scrollTo(0,0);
                 this.videoBool = true;
-
                 //for original videoList
                 var currentIndex = this.videoList.length;
                 var temporaryValue;
@@ -265,154 +261,26 @@ var Curiosity = function() { // eventually function(parameters) where parameters
                     this.videoListExtra[currentIndexEX] = this.videoListExtra[randomIndexEX];
                     this.videoListExtra[randomIndexEX] = temporaryValueEX;
                 }
-                this.videoList = this.videoList.concat(this.videoListExtra)//TODO: add way to get and set version here
-                console.log(this.videoList)
+                this.videoList = this.videoList.concat(this.videoListExtra);
+                // console.log(this.videoList)
             },
             continueToStart() {
+                if (this.subjectId === "") {
+                    alert("Please enter your Prolific ID");
+                    return false;
+                }
+                console.log(this.subjectId);
                 var myVideo = document.getElementById("video");
                 myVideo.src = this.videoList[this.videoIndex].src;
                 document.getElementById("startExp").style.display = "none";
                 document.getElementById("video1").style.display = "block";
                 document.getElementById("interruptionMeasure").style.display = "none";
                 document.getElementById("terminateExperiment").style.display = "none";
-            },
-            nextVideo() {
-                this.checkVideoGuess(this.videoGuess);
-                if ((this.validVideoGuess === 1 || this.sameAsBefore) && (this.answeredSurpriseValue === 1 || this.surpriseDontKnow) && this.answeredSatisfyValue === 1 && this.answeredAppealValue === 1 && this.answeredUpcomingCuriosityValue === 1) {
-
-                    //TODO all data from all versions will need to be pushed at each instance
-                    console.log(this.stoppedEarlyList);
-                    psiTurk.recordTrialData({
-                        version: this.version,
-                        trialNumber: this.videoIndex,
-                        trialAnswer: document.getElementById("video").src,
-                        guessList: this.guessList,
-                        curiosityList: this.curiosityList,
-                        confidenceList: this.confidenceList,
-                        predictList: this.predictList,
-                        frustrateList: this.frustrateList,
-                        enjoyList: this.enjoyList,
-                        unsettledList: this.unsettledList,
-                        surpriseValue: this.surpriseValue,
-                        satisfyValue: this.satisfyValue,
-                        appealValue: this.appealValue,
-                        finalGuess: this.videoGuess,
-                        numStops: this.numStops,
-                        stopsArray: this.stopsArray,
-                        stopsPercentArray: this.stopsPercentArray,
-                        submitTimeList: this.submitTimeList,
-                        percentageSubmitList: this.percentageSubmitList,
-                        vidDurr: this.vidDurr,
-                        alreadyKnowList: this.alreadyKnowList,
-                        stoppedEarlyList: this.stoppedEarlyList,
-                        sameAsBefore: this.sameAsBefore ? 1 : 0,
-                        surpriseDontKnow: this.surpriseDontKnow ? 1 : 0,
-                        replayCount: this.replayCount,
-                        endStudy: this.endStudy ? 1 : 0,
-                    });
-
-                    document.getElementById("finalGuess").style.display = "none";
-                    document.getElementById("curiosityMeasure").style.display = "none";
-                    document.getElementById("terminateExperiment").style.display = "none";
-
-                    this.videoIndex++;
-                    this.videoGuess = "";
-                    this.guessList = [];
-                    this.alreadyKnow = false;
-                    this.alreadyKnowList = [];
-                    this.curiosityValue = 50;
-                    this.curiosityList = [];
-                    this.answeredCuriosityValue = 0;
-                    this.confidenceValue = 50;
-                    this.confidenceList = [];
-                    this.answeredConfidenceValue = 0;
-                    this.predictValue = 50;
-                    this.predictList = [];
-                    this.answeredPredictValue = 0;
-                    this.frustrateValue = 50;
-                    this.frustrateList = [];
-                    this.answeredFrustrateValue = 0;
-                    this.unsettledValue = 50;
-                    this.unsettledList = [];
-                    this.answeredUnsettledValue = 0;
-                    this.enjoyValue = 50;
-                    this.enjoyList = [];
-                    this.answeredEnjoyValue = 0;
-                    this.surpriseValue = 50;
-                    this.satisfyValue = 50;
-                    this.appealValue = 50;
-                    this.upcomingCuriosityValue = 50;
-                    this.answeredSurpriseValue = 0;
-                    this.answeredSatisfyValue = 0;
-                    this.answeredAppealValue = 0;
-                    this.answeredUpcomingCuriosityValue = 0;
-                    this.finalGuessPlaceholder = "";
-                    this.finalGuess = "";
-                    this.validVideoGuess = 0;
-                    this.arrayMade = 0;
-                    this.iterIndex = 0;
-                    this.numStops = 0;
-                    this.stopsArray = [];
-                    this.stopsPercentArray = [];
-                    this.submitTime = 0;
-                    this.submitTimeList = [];
-                    this.percentageSubmit = 0;
-                    this.percentageSubmitList = [];
-                    this.vidDurr = 0;
-                    this.stoppedEarly = false;
-                    this.stoppedEarlyList = [];
-                    this.surpriseDontKnow = false;
-                    this.replayCount = 0;
-                    this.sameAsBefore = false;
-
-                    this.midPointMarkers(this.videoIndex);
-                    let myVideo = document.getElementById("video");
-
-                    if ((this.endStudy || this.videoIndex > this.videoList.length - 1)) {
-                        currentview = new Questionnaire();
-                    } else {
-                        myVideo.src = this.videoList[this.videoIndex].src;
-                        document.getElementById("videoGuess").style.display = "none"; // inline is the other option
-                        document.getElementById("interruptionMeasure").style.display = "none";
-                    }
-                } else {
-                    alert("Please answer all questions");
+                if (!this.isControlled) {
+                    document.getElementById("videoGuess").style.dislay = "inline";
+                    document.getElementById("videoGuess").select();
+                    document.getElementById("videoGuess").focus();
                 }
-            },
-            replayVideo() {
-                this.checkVideoGuess(this.videoGuess);
-                if ((this.validVideoGuess === 1 || this.sameAsBefore) && (this.answeredSurpriseValue === 1 || this.surpriseDontKnow) && this.answeredSatisfyValue === 1 && this.answeredAppealValue === 1 && this.answeredUpcomingCuriosityValue === 1) {
-                    document.getElementById("finalGuess").style.display = "none";
-                    document.getElementById("curiosityMeasure").style.display = "none";
-                    document.getElementById("terminateExperiment").style.display = "none";
-                    this.replayCount = this.replayCount + 1;
-                    let myVideo = document.getElementById("video");
-                    myVideo.currentTime = '0';
-                    myVideo.play();
-                    console.log(this.replayCount)
-                } else {
-                    alert("Please answer all questions");
-                    return false;
-                }
-            },
-            terminateExp() {
-                this.endStudy = true;
-                if (this.vidCurrTime < this.vidDurr) {
-                    this.testInput();
-                    console.log(this.validVideoGuess)
-                    this.validVideoGuess = 1;
-                    console.log(this.validVideoGuess)
-                    this.answeredSurpriseValue = 1;
-                    this.answeredSatisfyValue = 1;
-                    this.answeredAppealValue = 1;
-                    this.answeredUpcomingCuriosityValue = 1;
-                    let myVideo = document.getElementById("video");
-                    myVideo.pause();
-                }
-                this.nextVideo();
-                // } else {
-                //     this.nextVideo();
-                // }
             },
             makeStops(){
                 if (this.arrayMade !== 1) {
@@ -478,6 +346,12 @@ var Curiosity = function() { // eventually function(parameters) where parameters
             },
             pauseOnStops(){
                 let myVideo = document.getElementById("video");
+                if (myVideo === null) {
+                    return;
+                }
+                if(this.replay) {
+                    return;
+                }
                 function sorting(a, b) {
                     if (a === b)
                          return 0;
@@ -497,6 +371,31 @@ var Curiosity = function() { // eventually function(parameters) where parameters
                     }
                 }
             },
+            testGuessInput() {
+              var myVideo = document.getElementById("video");
+                if (this.videoGuess.length > 0) {
+                    if (!myVideo.paused) {
+                        myVideo.pause();
+                    }
+                    let keyCode = event.key || event.keyCode;
+                    if (keyCode === 13 || keyCode === "Enter") {
+                    this.checkVideoGuess(this.videoGuess);
+                        if (this.validVideoGuess === 1) {
+                            this.submitTime = myVideo.currentTime;
+                            this.percentageSubmit = (myVideo.currentTime / myVideo.duration) * 100;
+                            document.getElementById("interruptionMeasure").style.display = "block";
+                            if (this.videoIndex > this.vidCount) {
+                                document.getElementById("terminateExperiment").style.display = "inline";
+                            } else {
+                                document.getElementById("terminateExperiment").style.display = "none";
+                            }
+                        }
+                    }
+                }
+                if (this.videoGuess.length < 1) {
+                    myVideo.play();
+                }
+            },
             testInput(callback) {
                 let myVideo = document.getElementById("video");
                 this.checkVideoGuess(this.videoGuess);
@@ -504,6 +403,8 @@ var Curiosity = function() { // eventually function(parameters) where parameters
                     myVideo.play();
                     this.iterIndex++;
                     this.guessList.push(this.videoGuess);
+                    this.submitTimeList.push(this.submitTime);
+                    this.percentageSubmitList.push(this.percentageSubmit);
                     this.curiosityList.push(this.curiosityValue);
                     this.predictList.push(this.predictValue);
                     this.confidenceList.push(this.confidenceValue);
@@ -521,14 +422,21 @@ var Curiosity = function() { // eventually function(parameters) where parameters
                     this.answeredEnjoyValue = 0;
                     this.answeredFrustrateValue = 0;
                     this.answeredUnsettledValue = 0;
-                    this.curiosityValue = 50;
-                    this.predictValue = 50;
-                    this.confidenceValue = 50;
-                    this.enjoyValue = 50;
-                    this.frustrateValue = 50;
-                    this.unsettledValue = 50;
+                    this.curiosityValue = 0;
+                    this.predictValue = 0;
+                    this.confidenceValue = 0;
+                    this.enjoyValue = 0;
+                    this.frustrateValue = 0;
+                    this.unsettledValue = 0;
 
                     document.getElementById("interruptionMeasure").style.display = "none";
+                    document.getElementById("terminateExperiment").style.display = "none";
+
+                    if (!this.isControlled) {
+                        document.getElementById("videoGuess").style.display = "inline";
+                        document.getElementById("videoGuess").select();
+                        document.getElementById("videoGuess").focus();
+                    }
                     return true;
 
                 } else {
@@ -537,7 +445,10 @@ var Curiosity = function() { // eventually function(parameters) where parameters
                 }
             },
             //function for advancing video to the end (stops reveal)
-            advanceVideo() {
+            advanceVideo() { //TODO : sometimes skips forward?
+                this.cutShort = true;
+                let myVideo = document.getElementById("video");
+                myVideo.pause();
                 this.checkVideoGuess(this.videoGuess);
                 if ((this.answeredPredictValue === 1 || this.answeredConfidenceValue === 1) && (this.answeredCuriosityValue === 1 || this.alreadyKnow) && (this.answeredFrustrateValue === 1 || this.answeredEnjoyValue === 1 || this.answeredUnsettledValue === 1) && this.validVideoGuess === 1) {
                     this.stoppedEarly = true;
@@ -552,10 +463,12 @@ var Curiosity = function() { // eventually function(parameters) where parameters
             },
             //function for skipping the video to the end (immediate reveal)
             skipToEnd() {
+                this.cutShort = true;
+                let myVideo = document.getElementById("video");
+                myVideo.pause();
                 this.checkVideoGuess(this.videoGuess);
                 if ((this.answeredPredictValue === 1 || this.answeredConfidenceValue === 1) && (this.answeredCuriosityValue === 1 || this.alreadyKnow) && (this.answeredFrustrateValue === 1 || this.answeredEnjoyValue === 1 || this.answeredUnsettledValue === 1) && this.validVideoGuess === 1) {
                     this.stoppedEarly = true;
-                    let myVideo = document.getElementById("video");
                     let test = this.testInput();
                     if (test) {
                         this.iterIndex = this.stopsArray.length;
@@ -571,13 +484,14 @@ var Curiosity = function() { // eventually function(parameters) where parameters
             finishedVideo() { //guess=""
                 var myVideo = document.getElementById("video");
                 myVideo.pause();
+                document.getElementById("videoGuess").style.display = "none";
+                document.getElementById("interruptionMeasure").style.display = "none";
                 document.getElementById("finalGuess").style.display = "inline";
                 document.getElementById("curiosityMeasure").style.display = "block";
-                // document.getElementById("finalGuess").focus();
                 document.getElementById("finalGuess").select();
                 if (this.videoIndex >= this.vidCount) {
                     if (this.videoIndex === this.vidCount && this.replayCount === 0) {
-                        alert("Last video of main task. Option to STOP now available at end of videos");
+                        alert("Last video of main task. The option to STOP THE GAME is now available");
                         document.getElementById("terminateExperiment").style.display = "inline";
                     } else {
                         document.getElementById("terminateExperiment").style.display = "inline";
@@ -586,10 +500,168 @@ var Curiosity = function() { // eventually function(parameters) where parameters
                     document.getElementById("terminateExperiment").style.display = "none";
                 }
             },
+            replayVideo() {
+                this.checkVideoGuess(this.videoGuess);
+                if ((this.validVideoGuess === 1 || this.sameAsBefore) && (this.answeredSurpriseValue === 1 || this.surpriseDontKnow) && this.answeredSatisfyValue === 1 && this.answeredAppealValue === 1 && this.answeredUpcomingCuriosityValue === 1) {
+                    document.getElementById("videoGuess").style.display = "none";
+                    document.getElementById("finalGuess").style.display = "none";
+                    document.getElementById("curiosityMeasure").style.display = "none";
+                    document.getElementById("terminateExperiment").style.display = "none";
+                    this.replay = true;
+                    this.replayCount = this.replayCount + 1;
+                    let myVideo = document.getElementById("video");
+                    myVideo.currentTime = '0';
+                    myVideo.play();
+                } else {
+                    alert("Please answer all questions");
+                    return false;
+                }
+            },
+            nextVideo() {
+                this.checkVideoGuess(this.videoGuess);
+                if ((this.validVideoGuess === 1 || this.sameAsBefore) && (this.answeredSurpriseValue === 1 || this.surpriseDontKnow) && this.answeredSatisfyValue === 1 && this.answeredAppealValue === 1 && this.answeredUpcomingCuriosityValue === 1) {
+                    //TODO all data from all versions will need to be pushed at each instance
+                    psiTurk.recordTrialData({
+                        subjectId: this.subjectId,
+                        version: this.version,
+                        trialNumber: this.videoIndex,
+                        trialAnswer: this.videoList[this.videoIndex].answer,
+                        guessList: this.guessList,
+                        curiosityList: this.curiosityList,
+                        confidenceList: this.confidenceList,
+                        predictList: this.predictList,
+                        frustrateList: this.frustrateList,
+                        enjoyList: this.enjoyList,
+                        unsettledList: this.unsettledList,
+                        surpriseValue: this.surpriseValue,
+                        satisfyValue: this.satisfyValue,
+                        appealValue: this.appealValue,
+                        finalGuess: this.videoGuess,
+                        numStops: this.numStops,
+                        stopsArray: this.stopsArray,
+                        stopsPercentArray: this.stopsPercentArray,
+                        submitTimeList: this.submitTimeList,
+                        percentageSubmitList: this.percentageSubmitList,
+                        vidDurr: this.vidDurr,
+                        alreadyKnowList: this.alreadyKnowList,
+                        stoppedEarlyList: this.stoppedEarlyList,
+                        sameAsBefore: this.sameAsBefore ? 1 : 0,
+                        surpriseDontKnow: this.surpriseDontKnow ? 1 : 0,
+                        replayCount: this.replayCount,
+                        endStudy: this.endStudy ? 1 : 0,
+                    });
+
+                    document.getElementById("finalGuess").style.display = "none";
+                    document.getElementById("curiosityMeasure").style.display = "none";
+                    document.getElementById("terminateExperiment").style.display = "none";
+
+                    this.videoIndex++;
+                    this.videoGuess = "";
+                    this.guessList = [];
+                    this.alreadyKnow = false;
+                    this.alreadyKnowList = [];
+                    this.curiosityValue = 0;
+                    this.curiosityList = [];
+                    this.answeredCuriosityValue = 0;
+                    this.confidenceValue = 0;
+                    this.confidenceList = [];
+                    this.answeredConfidenceValue = 0;
+                    this.predictValue = 0;
+                    this.predictList = [];
+                    this.answeredPredictValue = 0;
+                    this.frustrateValue = 0;
+                    this.frustrateList = [];
+                    this.answeredFrustrateValue = 0;
+                    this.unsettledValue = 0;
+                    this.unsettledList = [];
+                    this.answeredUnsettledValue = 0;
+                    this.enjoyValue = 0;
+                    this.enjoyList = [];
+                    this.answeredEnjoyValue = 0;
+                    this.surpriseValue = 0;
+                    this.satisfyValue = 0;
+                    this.appealValue = 0;
+                    this.upcomingCuriosityValue = 0;
+                    this.answeredSurpriseValue = 0;
+                    this.answeredSatisfyValue = 0;
+                    this.answeredAppealValue = 0;
+                    this.answeredUpcomingCuriosityValue = 0;
+                    this.finalGuessPlaceholder = "";
+                    this.finalGuess = "";
+                    this.validVideoGuess = 0;
+                    this.arrayMade = 0;
+                    this.iterIndex = 0;
+                    this.numStops = 0;
+                    this.stopsArray = [];
+                    this.stopsPercentArray = [];
+                    this.submitTime = 0;
+                    this.submitTimeList = [];
+                    this.percentageSubmit = 0;
+                    this.percentageSubmitList = [];
+                    this.vidDurr = 0;
+                    this.stoppedEarly = false;
+                    this.stoppedEarlyList = [];
+                    this.surpriseDontKnow = false;
+                    this.replayCount = 0;
+                    this.replay = false;
+                    this.sameAsBefore = false;
+                    this.cutShort = false;
+
+                    this.midPointMarkers(this.videoIndex);
+                    let myVideo = document.getElementById("video");
+
+                    if (this.endStudy) {
+                        currentview = new Questionnaire();
+                    } else if ((!this.endStudy && this.videoIndex > this.videoList.length - 1)) {
+                        alert("You have watched all of our videos! The Game will now end.");
+                        currentview = new Questionnaire();
+                    } else {
+                        myVideo.src = this.videoList[this.videoIndex].src;
+                        document.getElementById("interruptionMeasure").style.display = "none";
+                        if (this.isControlled) {
+                            document.getElementById("videoGuess").style.display = "none"; // inline is the other option
+                        } else {
+                            document.getElementById("videoGuess").style.display = "inline";
+                            document.getElementById("videoGuess").select();
+                            document.getElementById("videoGuess").focus();
+                        }
+                    }
+                } else {
+                    alert("Please answer all questions");
+                }
+            },
+            terminateExp() {
+                let myVideo = document.getElementById("video");
+                if (myVideo.currentTime < myVideo.duration && !this.cutShort) {
+                    var v = this.videoGuess;
+                    if (this.testInput()) {
+                        myVideo.pause();
+                        this.videoGuess = v;
+                        this.answeredSurpriseValue = 1;
+                        this.answeredSatisfyValue = 1;
+                        this.answeredAppealValue = 1;
+                        this.answeredUpcomingCuriosityValue = 1;
+                        this.endStudy = true;
+                        this.nextVideo();
+                    }
+                } else {
+                    var v = this.videoGuess;
+                    this.checkVideoGuess(this.videoGuess);
+                    this.videoGuess = v;
+                    if ((this.validVideoGuess === 1 || this.sameAsBefore) && (this.answeredSurpriseValue === 1 || this.surpriseDontKnow) && this.answeredSatisfyValue === 1 && this.answeredAppealValue === 1 && this.answeredUpcomingCuriosityValue === 1) {
+                        this.endStudy = true;
+                        this.nextVideo();
+                    } else {
+                        alert("Please answer all questions");
+                    }
+                }
+            },
             sliderFxn_curiosity() {
                 var slider = document.getElementById("slider_cur");
                 this.curiosityValue = slider.value;
                 this.answeredCuriosityValue = 1;
+                console.log(this.curiosityValue);
+                console.log(this.answeredCuriosityValue)
             },
             sliderFxn_predict() {
                 var slider = document.getElementById("slider_pre");
@@ -639,7 +711,6 @@ var Curiosity = function() { // eventually function(parameters) where parameters
             checkVideoGuess(videoGuess) {
                 if (videoGuess.length <= 1 && this.sameAsBefore === false) {
                     alert("Please enter a guess more than 2 characters");
-                    this.videoGuess = "";
                 }
                 else {
                     this.validVideoGuess = 1;
@@ -729,11 +800,11 @@ var currentview;
 
 $(window).load(function () {
     //get random number 1 - 5
-    // var randomNumber = 1;
+    var randomNumber = Math.floor(Math.random() * Math.floor(24)) + 1;
     psiTurk.doInstructions(
         instructionPages, // a list of pages you want to display in sequence
         function () {
-            currentview = new Curiosity(); //stageHtmlName[randomNumber]
+            currentview = new Curiosity(stageHtmlName[randomNumber]);
         } // what you want to do when you are done with instructions
     );
 });

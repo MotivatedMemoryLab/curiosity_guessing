@@ -81,7 +81,7 @@
                    @loadedmetadata = "makeVidDurr" @timeupdate = "pauseOnStops">
                 <source v-bind:src = "x.src" v-bind:type = "x.type">
             </video>
-            <div id = "interruptionMeasure">
+            <div id = "interruptionMeasure" class="notAtStart">
                 <br>
                 <p >
                     Guess? <input id = "videoGuess"  ref = "videoGuess" type = "text" placeholder="Enter Guess"
@@ -111,7 +111,7 @@
 
                 </p>
             </div>
-            <div id = "curiosityMeasure">
+            <div id = "curiosityMeasure" class="notAtStart">
                 <br>
                 <p>
                     Enter your FINAL guess: <input id = "finalGuess"  ref = "videoGuess" type = "text"
@@ -147,7 +147,7 @@
                     <button @click = "nextVideo" class = "button">Next Video</button>
                 </p>
             </div>
-            <div id = "terminateExperiment">
+            <div id = "terminateExperiment" class="notAtStart">
                 <br>
                 <button @click = "terminateExp" class = "button">Stop Experiment</button>
             </div>

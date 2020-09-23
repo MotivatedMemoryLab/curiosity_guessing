@@ -1,0 +1,104 @@
+<div id = "welcome">
+        <h3><strong>Welcome to the Video Guessing Experiment by the Adcock Lab at Duke University!</strong></h3>
+        <p>
+            Please carefully review the instructions below and on the following page about how to navigate the task.
+            <strong>These will not be repeated and you will not be able to return to the instructions once you start
+                the task.</strong>
+        </p>
+        <br>
+        <h3><strong>How to Guess</strong></h3>
+        <p>
+            While you watch these short videos, we want you to <strong>actively guess what you think the drawing is going
+            to turn into.</strong> For example, as you watch a video you might first see the line move upwards and maybe
+            you think it's going to be a mountain. But after a couple more moments, the drawing starts
+            to look more like a boat. So, throughout the video you should have submitted two guesses into the
+            text box provided, first "mountain" followed by "boat" and so forth over the course of the video.
+        </p>
+        <p>
+            We expect your guess might evolve or change over the video and we are interested in what that process looks like.
+            Try to guess <strong>each time you have a different idea of what the drawing is going to be, at least once per video.</strong>
+        </p>
+        <p>
+            As soon as you begin to enter text into the provided text box, the video will pause so you
+            have time to record your response. To submit your guess, type out your response and hit the <strong>ENTER</strong>
+            key.
+        </p>
+        <p>
+            Try to use the most common English words for your guesses. For example, if you see an image of a hamster
+            write "hamster" instead of "animal" or "Winter White Dwarf hamster".
+        </p>
+        <p>
+            When watching these videos please try your best to <strong>focus your attention on the line
+            to give us the best understanding of how and when you can identify what it being drawn.</strong>
+        </p>
+        <br>
+        <h3><strong>How to Answer Questions About the Videos</strong></h3>
+        <p>
+            After you have submitted your guess, you will be asked to answer a few questions about the video
+            (e.g. How much do you want to see the rest of the drawing?).
+        </p>
+        <p>
+            You must make a response to <strong>all</strong> questions on the screen. <strong>If your response is "0" for
+            any of the sliding scales, you still have to click the sliding circle to register a response.</strong> You will
+            be prompted to answer all the questions if you happen to forget one.
+        </p>
+        <br>
+        <h3><strong>How to Get Back to the Videos</strong></h3>
+        <p>
+            After responding to the questions, you get to decide whether you would like to <strong>continue watching the current
+            video ("Continue Watching")</strong> or <strong>move on to the next video ("Advance to Next")</strong> by
+            selecting the appropriate button. If you elect to move on to the next video, you will not be able
+            to see the final drawing. Before you can move to the next video, you will first be asked to answer the questions you would answer at
+            the end of each video.
+        </p>
+        <br>
+        <p>
+            <strong>Press Next to continue reading instructions.</strong>
+        </p>
+
+        <button id = "startButton" class = "button" @click = "startExp">Next</button>
+    </div>
+    <div id = "startExp" >
+        <h3><strong>How to Move from Video to Video</strong></h3>
+        <p>
+            At the end of a trial, you will have the option to <strong>replay the video ("Replay Video")</strong>, this time with
+            <u>no interruptions</u> or <strong>move to the next video ("Next Video")</strong>. To select either option,
+            you must first type in your final guess and again, make a response to <strong>ALL</strong> slider scales.
+            You, again, will be prompted to answer all of the questions if you happen to forget one.
+        </p>
+        <br>
+        <h3><strong>How to End or Continue the Game</strong></h3>
+        <p>
+            Once you've watched the 25 pre-selected videos, you can choose to <strong>continue watching more videos</strong>
+            if you want to. These additional videos will function just like the previous ones except now <strong>you will
+            have the option to stop the game</strong> either during the video (at pause points) or after the
+            video has finished.
+        </p>
+        <p>
+            At this point, you may watch as many or as few of the videos as you want to. These additional videos
+            do not impact your compensation.
+        </p>
+        <br>
+        <h4><strong>Practical Information for Playing the Game</strong></h4>
+        <ul>
+              <li>You must make a response to <strong>all</strong> questions on the screen. <strong>If your response is "0"
+                  for any of the sliding scales, you still have to click the sliding circle to register a response.</strong></li>
+              <li>You will receive alerts that you are <strong>halfway</strong> through the task and when you have
+            <strong>5</strong> videos left to go. Again, we anticipate the task taking about 25-30 minutes to complete.</li>
+              <li>Depending on your browser and internet connection, sometimes a video will freeze for a handful of seconds.
+                 If this happens, please <strong>DO NOT try to hit the Refresh button or move backwards in the task.</strong></li>
+        </ul>
+        <br>
+        <h3><strong>How to Start!</strong></h3>
+        <p>
+            <strong>Videos will start playing automatically when you hit the button to advance (including the "Start"
+                button below).</strong>
+        </p>
+        <p>
+            If you would like to begin the experiment, please enter your Prolific ID below and press the <strong>START</strong> button. </p>
+            <input id = "subjectId" type = "text" placeholder="Enter Prolific Id..." v-model = "subjectId">
+        </p>
+        <br>
+
+        <button class = "button" @click = "continueToStart">Start</button>
+    </div>

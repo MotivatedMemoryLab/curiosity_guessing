@@ -97,3 +97,7 @@ h1 {
 .slider{
     width: 50%;
 }
+
+.notAtStart{
+    display: none
+}
