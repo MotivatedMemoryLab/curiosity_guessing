@@ -152,7 +152,7 @@ var Curiosity = function(stage_version) {
             subjectId: "",
             version: stage_version.studyType,
             endStudy: false,
-            vidCount: 24,
+            vidCount: 2, //24,
             isControlled: stage_version.controlled,
 
             //Variables collected once per trial
