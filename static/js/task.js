@@ -12,7 +12,7 @@ var psiTurk = new PsiTurk(uniqueId, adServerLoc, mode);
 var pages = [
 	"instructions/instruct-all-versions.html",
     "stage_versions/stage.html",
-    "postquestionnaire.html", //TODO: edit post-questionnaire survey
+    "postquestionnaire.html",
     "stage_versions/stage_OCFA.html",
     "stage_versions/stage_OCFS.html",
     "stage_versions/stage_OCUA.html",
@@ -92,40 +92,40 @@ var Curiosity = function(stage_version) {
         el: "#app",
         data: {
             videoList: [
-                // {src: "static/videos/brain.mp4", type: "video/mp4", answer: "Brain"},
-                // {src: "static/videos/astronaut.mp4", type: "video/mp4", answer: "Astronaut"},
-                // {src: "static/videos/bananas.mp4", type: "video/mp4", answer: "Bananas"},
-                // {src: "static/videos/bellpepper.mp4", type: "video/mp4", answer: "Bell Pepper"},
-                // {src: "static/videos/ballerina.mp4", type: "video/mp4", answer: "Ballerina"},
-                // {src: "static/videos/bull.mp4", type: "video/mp4", answer: "Bull"},
-                // {src: "static/videos/cappuccino.mp4", type: "video/mp4", answer: "Cappuccino"},
-                // {src: "static/videos/car.mp4", type: "video/mp4", answer: "Car"},
-                // {src: "static/videos/dog.mp4", type: "video/mp4", answer: "Dog"},
-                // {src: "static/videos/gamecontroller.mp4", type: "video/mp4", answer: "Game Controller"},
-                // {src: "static/videos/harp.mp4", type: "video/mp4", answer: "Harp"},
-                // {src: "static/videos/headphones.mp4", type: "video/mp4", answer: "Headphones"},
+                {src: "static/videos/brain.mp4", type: "video/mp4", answer: "Brain"},
+                {src: "static/videos/astronaut.mp4", type: "video/mp4", answer: "Astronaut"},
+                {src: "static/videos/bananas.mp4", type: "video/mp4", answer: "Bananas"},
+                {src: "static/videos/bellpepper.mp4", type: "video/mp4", answer: "Bell Pepper"},
+                {src: "static/videos/ballerina.mp4", type: "video/mp4", answer: "Ballerina"},
+                {src: "static/videos/bull.mp4", type: "video/mp4", answer: "Bull"},
+                {src: "static/videos/cappuccino.mp4", type: "video/mp4", answer: "Cappuccino"},
+                {src: "static/videos/car.mp4", type: "video/mp4", answer: "Car"},
+                {src: "static/videos/dog.mp4", type: "video/mp4", answer: "Dog"},
+                {src: "static/videos/gamecontroller.mp4", type: "video/mp4", answer: "Game Controller"},
+                {src: "static/videos/harp.mp4", type: "video/mp4", answer: "Harp"},
+                {src: "static/videos/headphones.mp4", type: "video/mp4", answer: "Headphones"},
                 {src: "static/videos/hotairballoon.mp4", type: "video/mp4", answer: "Hot Air Balloon"},
-                // {src: "static/videos/microscope.mp4", type: "video/mp4", answer: "Microscope"},
+                {src: "static/videos/microscope.mp4", type: "video/mp4", answer: "Microscope"},
                 {src: "static/videos/palmtree.mp4", type: "video/mp4", answer: "Palm Tree"},
-                // {src: "static/videos/pizza.mp4", type: "video/mp4", answer: "Pizza"},
-                // {src: "static/videos/pencil.mp4", type: "video/mp4", answer: "Pencil"},
-                // {src: "static/videos/pineapple.mp4", type: "video/mp4", answer: "Pineapple"},
-                // {src: "static/videos/ram.mp4", type: "video/mp4", answer: "Ram"},
-                // {src: "static/videos/rose.mp4", type: "video/mp4", answer: "Rose"},
-                // {src: "static/videos/saxophone.mp4", type: "video/mp4", answer: "Saxophone"},
-                // {src: "static/videos/sneaker.mp4", type: "video/mp4", answer: "Sneaker"},
-                // {src: "static/videos/surfer.mp4", type: "video/mp4", answer: "Surfer"},
-                // {src: "static/videos/taco.mp4", type: "video/mp4", answer: "Taco"},
-                // {src: "static/videos/jellyfish.mp4", type: "video/mp4", answer: "Jelly Fish"},
+                {src: "static/videos/pizza.mp4", type: "video/mp4", answer: "Pizza"},
+                {src: "static/videos/pencil.mp4", type: "video/mp4", answer: "Pencil"},
+                {src: "static/videos/pineapple.mp4", type: "video/mp4", answer: "Pineapple"},
+                {src: "static/videos/ram.mp4", type: "video/mp4", answer: "Ram"},
+                {src: "static/videos/rose.mp4", type: "video/mp4", answer: "Rose"},
+                {src: "static/videos/saxophone.mp4", type: "video/mp4", answer: "Saxophone"},
+                {src: "static/videos/sneaker.mp4", type: "video/mp4", answer: "Sneaker"},
+                {src: "static/videos/surfer.mp4", type: "video/mp4", answer: "Surfer"},
+                {src: "static/videos/taco.mp4", type: "video/mp4", answer: "Taco"},
+                {src: "static/videos/jellyfish.mp4", type: "video/mp4", answer: "Jelly Fish"},
             ],
 
             videoListExtra: [
                 // {src: "static/videos/pomegranate.mp4", type: "video/mp4", answer: "Pomegranate"},
                 {src: "static/videos/squirrel.mp4", type: "video/mp4", answer: "Squirrel"},
                 {src: "static/videos/pancakes.mp4", type: "video/mp4", answer: "Pancakes"},
-                // {src: "static/videos/elephant.mp4", type: "video/mp4", answer: "Elephant"},
-                // {src: "static/videos/golfer.mp4", type: "video/mp4", answer: "Golfer"},
-                // {src: "static/videos/guitar.mp4", type: "video/mp4", answer: "Guitar"},
+                {src: "static/videos/elephant.mp4", type: "video/mp4", answer: "Elephant"},
+                {src: "static/videos/golfer.mp4", type: "video/mp4", answer: "Golfer"},
+                {src: "static/videos/guitar.mp4", type: "video/mp4", answer: "Guitar"},
                 // {src: "static/videos/lizard.mp4", type: "video/mp4", answer: "Lizard"},
                 // {src: "static/videos/lungs.mp4", type: "video/mp4", answer: "Lungs"},
                 // {src: "static/videos/wave.mp4", type: "video/mp4", answer: "Wave"},
@@ -134,14 +134,14 @@ var Curiosity = function(stage_version) {
                 // {src: "static/videos/skateboard.mp4", type: "video/mp4", answer: "Skateboard"},
                 // {src: "static/videos/panda.mp4", type: "video/mp4", answer: "Panda"},
                 // {src: "static/videos/cactus.mp4", type: "video/mp4", answer: "Cactus"},
-                // {src: "static/videos/laptop.mp4", type: "video/mp4", answer: "Laptop"},
-                // {src: "static/videos/lightbulb.mp4", type: "video/mp4", answer: "Light Bulb"},
-                // {src: "static/videos/tiger.mp4", type: "video/mp4", answer: "Tiger"},
-                // {src: "static/videos/hand.mp4", type: "video/mp4", answer: "Hand"},
+                {src: "static/videos/laptop.mp4", type: "video/mp4", answer: "Laptop"},
+                {src: "static/videos/lightbulb.mp4", type: "video/mp4", answer: "Light Bulb"},
+                {src: "static/videos/tiger.mp4", type: "video/mp4", answer: "Tiger"},
+                {src: "static/videos/hand.mp4", type: "video/mp4", answer: "Hand"},
                 // {src: "static/videos/bike.mp4", type: "video/mp4", answer: "Bike"},
                 // {src: "static/videos/books.mp4", type: "video/mp4", answer: "Books"},
                 // {src: "static/videos/nut.mp4", type: "video/mp4", answer: "Nut"},
-                // {src: "static/videos/icecream.mp4", type: "video/mp4", answer: "Ice Cream"},
+                {src: "static/videos/icecream.mp4", type: "video/mp4", answer: "Ice Cream"},
                 // {src: "static/videos/airplane.mp4", type: "video/mp4", answer: "Airplane"},
                 // {src: "static/videos/bottle.mp4", type: "video/mp4", answer: "Bottle"},
                 // {src: "static/videos/chef.mp4", type: "video/mp4", answer: "Chef"},
@@ -152,7 +152,7 @@ var Curiosity = function(stage_version) {
             subjectId: "",
             version: stage_version.studyType,
             endStudy: false,
-            vidCount: 1, //TODO: this will need to change for real thing (also needs to happen at the actual last vid of experiment
+            vidCount: 24,
             isControlled: stage_version.controlled,
 
             //Variables collected once per trial
@@ -162,11 +162,11 @@ var Curiosity = function(stage_version) {
             sameAsBefore: false,
             finalGuessPlaceholder: "",
             trialAnswer: "",
-            surpriseValue: 0,
+            surpriseValue: 50,
             surpriseDontKnow: false,
-            satisfyValue: 0,
-            appealValue: 0,
-            upcomingCuriosityValue: 0,
+            satisfyValue: 50,
+            appealValue: 50,
+            upcomingCuriosityValue: 50,
             answeredSurpriseValue: 0,
             answeredSatisfyValue: 0,
             answeredAppealValue: 0,
@@ -183,13 +183,13 @@ var Curiosity = function(stage_version) {
             submitTime: 0,
             percentageSubmit: 0,
             alreadyKnow: false,
-            curiosityValue: 0,
-            finishValue: 0,
-            confidenceValue: 0,
-            predictValue: 0,
-            unsettledValue: 0,
-            enjoyValue: 0,
-            frustrateValue: 0,
+            curiosityValue: 50,
+            finishValue: 50,
+            confidenceValue: 50,
+            predictValue: 15,
+            unsettledValue: 50,
+            enjoyValue: 50,
+            frustrateValue: 50,
             answeredPredictValue: 0,
             answeredUnsettledValue: 0,
             answeredEnjoyValue: 0,
@@ -422,12 +422,12 @@ var Curiosity = function(stage_version) {
                     this.answeredEnjoyValue = 0;
                     this.answeredFrustrateValue = 0;
                     this.answeredUnsettledValue = 0;
-                    this.curiosityValue = 0;
-                    this.predictValue = 0;
-                    this.confidenceValue = 0;
-                    this.enjoyValue = 0;
-                    this.frustrateValue = 0;
-                    this.unsettledValue = 0;
+                    this.curiosityValue = 50;
+                    this.predictValue = 15;
+                    this.confidenceValue = 50;
+                    this.enjoyValue = 50;
+                    this.frustrateValue = 50;
+                    this.unsettledValue = 50;
 
                     document.getElementById("interruptionMeasure").style.display = "none";
                     document.getElementById("terminateExperiment").style.display = "none";
@@ -445,7 +445,7 @@ var Curiosity = function(stage_version) {
                 }
             },
             //function for advancing video to the end (stops reveal)
-            advanceVideo() { //TODO : sometimes skips forward?
+            advanceVideo() {
                 this.cutShort = true;
                 let myVideo = document.getElementById("video");
                 myVideo.pause();
@@ -520,7 +520,6 @@ var Curiosity = function(stage_version) {
             nextVideo() {
                 this.checkVideoGuess(this.videoGuess);
                 if ((this.validVideoGuess === 1 || this.sameAsBefore) && (this.answeredSurpriseValue === 1 || this.surpriseDontKnow) && this.answeredSatisfyValue === 1 && this.answeredAppealValue === 1 && this.answeredUpcomingCuriosityValue === 1) {
-                    //TODO all data from all versions will need to be pushed at each instance
                     psiTurk.recordTrialData({
                         subjectId: this.subjectId,
                         version: this.version,
@@ -536,6 +535,7 @@ var Curiosity = function(stage_version) {
                         surpriseValue: this.surpriseValue,
                         satisfyValue: this.satisfyValue,
                         appealValue: this.appealValue,
+                        upcomingCuriosityValue: this.upcomingCuriosityValue,
                         finalGuess: this.videoGuess,
                         numStops: this.numStops,
                         stopsArray: this.stopsArray,
@@ -560,28 +560,28 @@ var Curiosity = function(stage_version) {
                     this.guessList = [];
                     this.alreadyKnow = false;
                     this.alreadyKnowList = [];
-                    this.curiosityValue = 0;
+                    this.curiosityValue = 50;
                     this.curiosityList = [];
                     this.answeredCuriosityValue = 0;
-                    this.confidenceValue = 0;
+                    this.confidenceValue = 50;
                     this.confidenceList = [];
                     this.answeredConfidenceValue = 0;
-                    this.predictValue = 0;
+                    this.predictValue = 15;
                     this.predictList = [];
                     this.answeredPredictValue = 0;
-                    this.frustrateValue = 0;
+                    this.frustrateValue = 50;
                     this.frustrateList = [];
                     this.answeredFrustrateValue = 0;
-                    this.unsettledValue = 0;
+                    this.unsettledValue = 50;
                     this.unsettledList = [];
                     this.answeredUnsettledValue = 0;
-                    this.enjoyValue = 0;
+                    this.enjoyValue = 50;
                     this.enjoyList = [];
                     this.answeredEnjoyValue = 0;
-                    this.surpriseValue = 0;
-                    this.satisfyValue = 0;
-                    this.appealValue = 0;
-                    this.upcomingCuriosityValue = 0;
+                    this.surpriseValue = 50;
+                    this.satisfyValue = 50;
+                    this.appealValue = 50;
+                    this.upcomingCuriosityValue = 50;
                     this.answeredSurpriseValue = 0;
                     this.answeredSatisfyValue = 0;
                     this.answeredAppealValue = 0;

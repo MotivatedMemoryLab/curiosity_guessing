@@ -20,3 +20,4 @@ movedata.sh
 resources
 static/videos/*
 static/images/*
+data_files/*

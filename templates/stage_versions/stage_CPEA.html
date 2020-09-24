@@ -38,9 +38,9 @@
             (e.g. How much do you want to see the rest of the drawing?).
         </p>
         <p>
-            You must make a response to <strong>all</strong> questions on the screen. <strong>If your response is "0" for
-            any of the sliding scales, you still have to click the sliding circle to register a response.</strong> You will
-            be prompted to answer all the questions if you happen to forget one.
+            You must make a response to <strong>all</strong> questions on the screen. All sliding scales will <strong>start at the midpoint.</strong>
+            <strong>If your response is at the midpoint, you still have to click the sliding circle to register a response.</strong>
+            You will be prompted to answer all the questions if you happen to forget one.
         </p>
         <br>
         <h3><strong>How to Get Back to the Videos</strong></h3>
@@ -123,12 +123,12 @@
                     <label for="known">Already Know</label>
                 </p>
                 <p>
-                    <strong>How <u>MUCH MORE</u> of the video do you need to see before you will know what the drawing is?</strong>
+                    <strong>Guess how <u>MUCH MORE</u> of the video you will need to see before you know what the drawing is?</strong>
                     <br>0 more seconds <input class = "slider" id = "slider_pre" type = "range" min = '0' max = "30"
                                              v-bind:value = "predictValue" @click = "sliderFxn_predict"> 30 more seconds
                 </p>
                 <p>
-                    <strong>How much <u>FUN</u> are you having watching this video right now?</strong>
+                    <strong>How much are you <u>ENJOYING</u> watching this video right now?</strong>
                     <br>NOT at all <input class = "slider" id = "slider_enjoy" type = "range" min = '0' max = "100"
                                           v-bind:value = "enjoyValue" @click = "sliderFxn_enjoy"> VERY Much
                 </p>

@@ -21,7 +21,7 @@
         </p>
         <p>
             We expect your guess might evolve or change over the video and we are interested in what that process looks like.
-            Try to guess <strong>each time you have a different idea of what the drawing is going to be, at least once per video.</strong>
+            Try to guess <strong>each time you have a different idea of what the drawing is going to be, at least TWICE per video.</strong>
         </p>
         <p>
             As soon as you begin to enter text into the provided text box, the video will pause so you
@@ -43,9 +43,9 @@
             (e.g. How much do you want to see the rest of the drawing?).
         </p>
         <p>
-            You must make a response to <strong>all</strong> questions on the screen. <strong>If your response is "0" for
-            any of the sliding scales, you still have to click the sliding circle to register a response.</strong> You will
-            be prompted to answer all the questions if you happen to forget one.
+            You must make a response to <strong>all</strong> questions on the screen. All sliding scales will <strong>start at the midpoint.</strong>
+            <strong>If your response is at the midpoint, you still have to click the sliding circle to register a response.</strong>
+            You will be prompted to answer all the questions if you happen to forget one.
         </p>
         <br>
         <h3><strong>How to Get Back to the Videos</strong></h3>
@@ -131,7 +131,7 @@
                                              v-bind:value = "confidenceValue" @click = "sliderFxn_confidence"> VERY confident
                 </p>
                 <p>
-                    <strong>How much <u>FUN</u> are you having watching this video right now?</strong>
+                    <strong>How much are you <u>ENJOYING</u> watching this video right now?</strong>
                     <br>NOT at all <input class = "slider" id = "slider_enjoy" type = "range" min = '0' max = "100"
                                           v-bind:value = "enjoyValue" @click = "sliderFxn_enjoy"> VERY Much
                 </p>

@@ -38,9 +38,9 @@
             (e.g. How much do you want to see the rest of the drawing?).
         </p>
         <p>
-            You must make a response to <strong>all</strong> questions on the screen. <strong>If your response is "0" for
-            any of the sliding scales, you still have to click the sliding circle to register a response.</strong> You will
-            be prompted to answer all the questions if you happen to forget one.
+            You must make a response to <strong>all</strong> questions on the screen. All sliding scales will <strong>start at the midpoint.</strong>
+            <strong>If your response is at the midpoint, you still have to click the sliding circle to register a response.</strong>
+            You will be prompted to answer all the questions if you happen to forget one.
         </p>
         <br>
         <h3><strong>How to Get Back to the Videos</strong></h3>
@@ -128,7 +128,7 @@
                                              v-bind:value = "confidenceValue" @click = "sliderFxn_confidence"> VERY confident
                 </p>
                 <p>
-                    <strong>How much <u>FUN</u> are you having watching this video right now?</strong>
+                    <strong>How much are you <u>ENJOYING</u> watching this video right now?</strong>
                     <br>NOT at all <input class = "slider" id = "slider_enjoy" type = "range" min = '1' max = "100"
                                           v-bind:value = "enjoyValue" @click = "sliderFxn_enjoy"> VERY Much
                 </p>

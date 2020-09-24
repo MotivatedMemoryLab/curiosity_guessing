@@ -3,20 +3,45 @@
 
     <hr />
 
-    <p>You are finished! Thank you for your contributions to science. You will be eligible for full payment once you answer the following questions.</p>
+    <p>
+        You are finished with the task! Thank you for your contributions to science.
+        Please answer the following questions about the task before moving on to the surveys.
+    </p>
 
     <div class="instructions well">
 
         <form id="postquiz" action="debrief" method="post">
 
+            <!-- beginning of a question -->
+            <div class="row question">
+                <div class="col-md-8">
+                    Generally, how engaging did you find this task?
+                </div>
+                <div class="col-md-4">
+                    <select id="valence" name="valence">
+                        <option value="10">10 - Extremely engaging</option>
+                        <option value="9">9 - Very engaging</option>
+                        <option value="8">8 - Engaging</option>
+                        <option value="7">7 - Somewhat engaging</option>
+                        <option value="6">6 - A little bit engaging</option>
+                        <option value="5" SELECTED>5 - Neutral</option>
+                        <option value="4">4 - a little bit unengaging</option>
+                        <option value="3">3 - Somewhat unengaging</option>
+                        <option value="2">2 - Unengaging</option>
+                        <option value="1">1 - Very unengaging</option>
+                        <option value="0">0 - Extremely unengaging</option>
+                    </select>
+                </div>
+            </div>
+            <!-- end of a question -->
 
             <!-- beginning of a question -->
             <div class="row question">
                 <div class="col-md-8">
-                    On average, how did watching these videos make you feel?
+                    Generally, how did it feel to wait for the drawing to unfold overtime?
                 </div>
                 <div class="col-md-4">
-                    <select id="valence" name="valence">
+                    <select id="anticipation" name="anticipation">
                         <option value="10">10 - Extremely positive</option>
                         <option value="9">9 - Very positive</option>
                         <option value="8">8 - Positive</option>
@@ -36,6 +61,23 @@
             <!-- beginning of a question -->
             <div class="row question">
                 <div class="col-md-8">
+                    Generally, if you stopped a video short what was the main reason?
+                </div>
+                <div class="col-md-4">
+                    <select id="stopping" name="stopping">
+                        <option value="0">I knew what the drawing was</option>
+                        <option value="1">I was uninterested in what the drawing was going to be</option>
+                        <option value="2">I did not want to wait</option>
+                        <option value="3">Something else caught my attention outside the video</option>
+                        <option value="4">Another reason not specified above</option>
+                    </select>
+                </div>
+            </div>
+            <!-- end of a question -->
+
+            <!-- beginning of a question -->
+            <div class="row question">
+                <div class="col-md-8">
                     Did you experience any internet issues or feel like there was something wrong with the way the task was loading and being presented?
                 </div>
                 <div class="col-md-4">
@@ -44,112 +86,6 @@
                         <option value="1">Yes, issues with internet</option>
                         <option value="2">Yes, issues with task loading or display</option>
                         <option value="3">Yes, issues with both internet and task</option>
-                    </select>
-                </div>
-            </div>
-            <!-- end of a question -->
-
-            <!-- beginning of a question -->
-            <div class="row question">
-                <div class="col-md-8">
-                    What is your gender?
-                </div>
-                <div class="col-md-4">
-                    <select id="gender" name="gender">
-                        <option value="Male">Man</option>
-                        <option value="Female">Woman</option>
-                        <option value="Non-Binary">Non-binary</option>
-                        <option value="Prefer not to specify">Prefer not to specify</option>
-                    </select>
-                </div>
-            </div>
-            <!-- end of a question -->
-
-            <!-- beginning of a question -->
-            <div class="row question">
-                <div class="col-md-8">
-                    Which of the following best represents your racial or ethnic heritage?
-                </div>
-                <div class="col-md-4">
-                    <select id="race" name="race">
-                        <option value="White/Non-Hispanic">White/Non-Hispanic</option>
-                        <option value="White/Hispanic">White/Hispanic</option>
-                        <option value="Black">Black</option>
-                        <option value="East Asian">East Asian</option>
-                        <option value="Southeast Asian/Indian">Southeast Asian/Indian</option>
-                        <option value="Native American/American Indian">Native American/American Indian</option>
-                        <option value="Multiracial">Multiracial</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-            <!-- end of a question -->
-
-            <!-- beginning of a question -->
-            <div class="row question">
-                <div class="col-md-8">
-                    How old are you?
-                </div>
-                <div class="col-md-4">
-                    <select id="age" name="age">
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                        <option value="32">32</option>
-                        <option value="33">33</option>
-                        <option value="34">34</option>
-                        <option value="35">35</option>
-                        <option value="36">36</option>
-                        <option value="37">37</option>
-                        <option value="38">38</option>
-                        <option value="39">39</option>
-                        <option value="40">40</option>
-                        <option value="41">41</option>
-                        <option value="42">42</option>
-                        <option value="43">43</option>
-                        <option value="44">44</option>
-                        <option value="45">45</option>
-                        <option value="46">46</option>
-                        <option value="47">47</option>
-                        <option value="48">48</option>
-                        <option value="49">49</option>
-                        <option value="50">50</option>
-                        <option value="51">51</option>
-                        <option value="52">52</option>
-                        <option value="53">53</option>
-                        <option value="54">54</option>
-                        <option value="55">55</option>
-                        <option value="56">56</option>
-                        <option value="57">57</option>
-                        <option value="58">58</option>
-                        <option value="59">59</option>
-                        <option value="60">60</option>
-                        <option value="61">61</option>
-                        <option value="62">62</option>
-                        <option value="63">63</option>
-                        <option value="64">64</option>
-                        <option value="65">65</option>
-                        <option value="66">66</option>
-                        <option value="67">67</option>
-                        <option value="68">68</option>
-                        <option value="69">69</option>
-                        <option value="70">70</option>
-                        <option value="71">71</option>
-                        <option value="72">72</option>
-                        <option value="73">73</option>
-                        <option value="74">74</option>
-                        <option value="75">75</option>
                     </select>
                 </div>
             </div>
