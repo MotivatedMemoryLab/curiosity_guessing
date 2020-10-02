@@ -152,7 +152,7 @@ var Curiosity = function(stage_version) {
             subjectId: "",
             version: stage_version.studyType,
             endStudy: false,
-            vidCount: 2, //24,
+            vidCount: 24,
             isControlled: stage_version.controlled,
 
             //Variables collected once per trial
@@ -383,6 +383,7 @@ var Curiosity = function(stage_version) {
                         if (this.validVideoGuess === 1) {
                             this.submitTime = myVideo.currentTime;
                             this.percentageSubmit = (myVideo.currentTime / myVideo.duration) * 100;
+                            console.log(this.submitTime, this.percentageSubmit)
                             document.getElementById("interruptionMeasure").style.display = "block";
                             if (this.videoIndex > this.vidCount) {
                                 document.getElementById("terminateExperiment").style.display = "inline";
@@ -440,7 +441,7 @@ var Curiosity = function(stage_version) {
                     return true;
 
                 } else {
-                    alert("Please answer all questions");
+                    alert("Please click or move all sliding scales");
                     return false;
                 }
             },
@@ -457,7 +458,7 @@ var Curiosity = function(stage_version) {
                         this.finishedVideo();
                     }
                 } else {
-                    alert("Please answer all questions");
+                    alert("Please click or move all sliding scales");
                     return false;
                 }
             },
@@ -476,7 +477,7 @@ var Curiosity = function(stage_version) {
                         this.finishedVideo();
                     }
                 } else {
-                    alert("Please answer all questions");
+                    alert("Please click or move all sliding scales");
                     return false;
                 }
 
@@ -513,7 +514,7 @@ var Curiosity = function(stage_version) {
                     myVideo.currentTime = '0';
                     myVideo.play();
                 } else {
-                    alert("Please answer all questions");
+                    alert("Please click or move all sliding scales");
                     return false;
                 }
             },
@@ -627,7 +628,7 @@ var Curiosity = function(stage_version) {
                         }
                     }
                 } else {
-                    alert("Please answer all questions");
+                    alert("Please click or move all sliding scales");
                 }
             },
             terminateExp() {
@@ -652,7 +653,7 @@ var Curiosity = function(stage_version) {
                         this.endStudy = true;
                         this.nextVideo();
                     } else {
-                        alert("Please answer all questions");
+                        alert("Please click or move all sliding scales");
                     }
                 }
             },
